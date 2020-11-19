@@ -38,10 +38,9 @@
                     <div class="widget">
                         <h3 class="widget-title">pages</h3>
                         <ul class="menu">
-                            <li class="menu-item active"><a href="index.html">home</a></li>
-                            <li class="menu-item"><a href="elements.html">elements</a></li>
-                            <li class="menu-item"><a href="blog-index.html">blog</a></li>
-                            <li class="menu-item"><a href="about-us.html">about</a></li>
+                            <li class="menu-item active"><a href="<c:url value="/"/>">home</a></li>
+                            <li class="menu-item"><a href="<c:url value="/contact"/>">Contact</a></li>
+                            <li class="menu-item"><a href="<c:url value="/about"/>">about</a></li>
                             <li class="menu-item"><a href="user-page.html">user profile</a></li>
                         </ul>
                     </div><!-- .widget -->

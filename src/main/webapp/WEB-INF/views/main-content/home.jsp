@@ -59,10 +59,10 @@
                     <form action="search-result.html" name="search-hotel" id="search-hotel" class="htlfndr-search-form">
                         <div id="htlfndr-input-1" class="htlfndr-input-wrapper">
                             <input type="text" name="htlfndr-city" id="htlfndr-city" class="search-hotel-input" placeholder="Enter city, region or district" />
-                            <p class="htlfndr-search-checkbox">
-                                <input type="checkbox" id="htlfndr-checkbox" name="htlfndr-checkbox" value="no-dates" />
-                                <label for="htlfndr-checkbox">I don't have specific dates yet</label>
-                            </p>
+<%--                            <p class="htlfndr-search-checkbox">--%>
+<%--                                <input type="checkbox" id="htlfndr-checkbox" name="htlfndr-checkbox" value="no-dates" />--%>
+<%--                                <label for="htlfndr-checkbox">I don't have specific dates yet</label>--%>
+<%--                            </p>--%>
                         </div><!-- #htlfndr-input-1.htlfndr-input-wrapper -->
 
                         <div id="htlfndr-input-date-in" class="htlfndr-input-wrapper">
@@ -106,7 +106,7 @@
     <main role="main">
         <!-- Section with popular destinations -->
         <section class="container htlfndr-top-destinations">
-            <h2 class="htlfndr-section-title">top destinations</h2>
+            <h2 class="htlfndr-section-title">our destinations</h2>
             <div class="htlfndr-section-under-title-line"></div>
             <div class="row">
 
