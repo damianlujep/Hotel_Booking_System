@@ -30,7 +30,7 @@ public class MainPageController {
 
     @GetMapping("/")
     public String homePageController(){
-        return "home";
+        return "/main-content/home";
     }
 
     @GetMapping("/test")
