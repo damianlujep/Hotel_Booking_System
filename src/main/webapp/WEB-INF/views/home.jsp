@@ -49,7 +49,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="htlfndr-logo navbar-brand" href="index.html">
+                        <a class="htlfndr-logo navbar-brand" href="<c:url value="/"/>">
                             <img src="images/logo.png" alt="Logo" />
                             <p class="htlfndr-logo-text">Spagere <span>finder</span></p>
                         </a>
@@ -59,10 +59,10 @@
                         <!-- List with sing up/sing in links -->
                         <ul class="nav navbar-nav htlfndr-singup-block">
                             <li id="htlfndr-singup-link">
-                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-up"><span>sing up</span></a>
+                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-up"><span>registration</span></a>
                             </li>
                             <li id="htlfndr-singin-link">
-                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-in"><span>sing in</span></a>
+                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-in"><span>Login</span></a>
                             </li>
                         </ul><!-- .htlfndr-singup-block -->
                         <!-- List with currency and language dropdons -->
@@ -73,7 +73,8 @@
                                     <option value="eur">eur</option>
                                     <option value="gbp">gbp</option>
                                     <option value="jpy">jpy</option>
-                                    <option value="usd" selected="selected">usd</option>
+                                    <option value="usd">usd</option>
+                                    <option value="pln" selected="selected">PLN</option>
                                 </select>
                             </li>
                         </ul>
@@ -110,48 +111,19 @@
                     <div class="collapse navbar-collapse" id="htlfndr-main-nav">
                         <ul class="nav navbar-nav">
                             <li class="active">
-                                <a href="index.html">home</a>
+                                <a href="<c:url value="/"/>">home</a>
                             </li>
-                            <li><a href="elements.html">elements</a></li>
                             <li>
                                 <a href="blog-index.html">blog</a>
                             </li>
                             <li>
-                                <a href="about-us.html">about</a>
+                                <a href="<c:url value="/contact"/>">contact</a>
                             </li>
                             <li>
-                                <a href="user-page.html">user profile</a>
+                                <a href="<c:url value="/about"/>">about</a>
                             </li>
-                            <li  class="dropdown">
-                                <a href="#" onclick="return false;">Pages</a>
-                                <ul class="dropdown-menu">
-                                    <li  class="dropdown-submenu"><a href="search-result.html">Search result</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="search-result.html">Search result 1</a>
-                                            <li><a href="search-result-v-2.html">Search result 2</a></li>
-                                            <li><a href="search-result-v-3.html">Search result 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li  class="dropdown-submenu"><a href="hotel-page-v1.html">Hotel page</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="hotel-page-v1.html">Hotel page 1</a>
-                                            <li><a href="hotel-page-v2.html">Hotel page 1 Special offer</a></li>
-                                            <li><a href="hotel-page-v3.html">Hotel page 2</a></li>
-                                            <li><a href="hotel-page-v4.html">Hotel page 2 Special offer</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown-submenu"><a href="hotel-room-page.html">Hotel Room Page</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="hotel-room-page.html">Hotel Room Page</a>
-                                            <li><a href="hotel-room-page-special-offer.html">Hotel Room Page Special offer</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="payment.html">Payment</a></li>
-                                    <li><a href="search-rooms.html">Search Rooms</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
-                                    <li><a href="thanks-page.html">Thanks Page</a></li>
-                                    <li><a href="404-page.html">404 Page</a></li>
-                                </ul>
+                            <li>
+                                <a href="<c:url value="/member/profile"/>">user profile</a>
                             </li>
                         </ul>
                     </div><!-- .collapse.navbar-collapse -->
@@ -214,10 +186,10 @@
                     <form action="search-result.html" name="search-hotel" id="search-hotel" class="htlfndr-search-form">
                         <div id="htlfndr-input-1" class="htlfndr-input-wrapper">
                             <input type="text" name="htlfndr-city" id="htlfndr-city" class="search-hotel-input" placeholder="Enter city, region or district" />
-                            <p class="htlfndr-search-checkbox">
-                                <input type="checkbox" id="htlfndr-checkbox" name="htlfndr-checkbox" value="no-dates" />
-                                <label for="htlfndr-checkbox">I don't have specific dates yet</label>
-                            </p>
+<%--                            <p class="htlfndr-search-checkbox">--%>
+<%--                                <input type="checkbox" id="htlfndr-checkbox" name="htlfndr-checkbox" value="no-dates" />--%>
+<%--                                <label for="htlfndr-checkbox">I don't have specific dates yet</label>--%>
+<%--                            </p>--%>
                         </div><!-- #htlfndr-input-1.htlfndr-input-wrapper -->
 
                         <div id="htlfndr-input-date-in" class="htlfndr-input-wrapper">
@@ -261,7 +233,7 @@
     <main role="main">
         <!-- Section with popular destinations -->
         <section class="container htlfndr-top-destinations">
-            <h2 class="htlfndr-section-title">top destinations</h2>
+            <h2 class="htlfndr-section-title">our destinations</h2>
             <div class="htlfndr-section-under-title-line"></div>
             <div class="row">
 
