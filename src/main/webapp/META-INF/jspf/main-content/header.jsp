@@ -63,7 +63,7 @@
                                 <a href="#" data-toggle="modal" data-target="#htlfndr-sing-up"><span>registration</span></a>
                             </li>
                             <li id="htlfndr-singin-link">
-                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-in"><span>Login</span></a>
+                                <a href="/login" data-toggle="modal" data-target="#htlfndr-sing-in"><span>Login</span></a>
                             </li>
                         </ul><!-- .htlfndr-singup-block -->
                         <!-- List with currency and language dropdons -->

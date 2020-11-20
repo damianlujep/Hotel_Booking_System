@@ -33,6 +33,11 @@ public class MainPageController {
         return "/main-content/home";
     }
 
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return "/main-content/login-form";
+    }
+
     @GetMapping("/test")
     @ResponseBody
     public String test(){
