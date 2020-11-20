@@ -20,7 +20,7 @@
             <div class="clearfix">
                 <span>
                     Don't Have an Account?
-                    <a href="#"><span>Sing up</span></a>
+                    <a href="<c:url value="/registration"/>"><span>Sing up</span></a>
                 </span>
             </div>
             <div>
