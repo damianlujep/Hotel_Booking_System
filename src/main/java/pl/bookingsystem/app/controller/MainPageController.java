@@ -9,6 +9,42 @@ import pl.bookingsystem.app.repository.*;
 
 @Controller
 public class MainPageController {
+
+    @GetMapping("/")
+    public String homePageController(){
+        return "/main-content/home";
+    }
+
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return "/main-content/login-form";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private final MemberRepository memberRepository;
     private final HotelRepository hotelRepository;
     private final CalendarAvailabilityRepository car;
@@ -26,11 +62,6 @@ public class MainPageController {
         this.hpr = hpr;
         this.rps = rps;
         this.rts = rts;
-    }
-
-    @GetMapping("/")
-    public String homePageController(){
-        return "/main-content/home";
     }
 
     @GetMapping("/test")
@@ -52,4 +83,21 @@ public class MainPageController {
                 + one5.toString() + "</br></br>"
                 + one6.toString();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
