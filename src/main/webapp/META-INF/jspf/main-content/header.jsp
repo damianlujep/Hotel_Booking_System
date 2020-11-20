@@ -60,10 +60,10 @@
                         <!-- List with sing up/sing in links -->
                         <ul class="nav navbar-nav htlfndr-singup-block">
                             <li id="htlfndr-singup-link">
-                                <a href="#" data-toggle="modal" data-target="#htlfndr-sing-up"><span>registration</span></a>
+                                <a href="<c:url value="/registration"/>"><span>registration</span></a>
                             </li>
                             <li id="htlfndr-singin-link">
-                                <a href="/login" data-toggle="modal" data-target="#htlfndr-sing-in"><span>Login</span></a>
+                                <a href="<c:url value="/login"/>" ><span>login</span></a>
                             </li>
                         </ul><!-- .htlfndr-singup-block -->
                         <!-- List with currency and language dropdons -->
