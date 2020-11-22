@@ -3,6 +3,7 @@ package pl.bookingsystem.app.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
@@ -16,8 +17,10 @@ public class HotelSearchingDto {
     @NotBlank
     private String city;
     @NotNull
+    @DateTimeFormat(pattern = "d MMM yyyy")
     private LocalDate arrivalDate;
     @NotNull
+    @DateTimeFormat(pattern = "d MMM yyyy")
     private LocalDate departureDate;
     @Max(2)
     @NotNull
