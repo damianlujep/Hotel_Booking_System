@@ -54,7 +54,8 @@
                             <img src="images/logo.png" alt="Logo" />
                             <p class="htlfndr-logo-text">Spagere <span>finder</span></p>
                         </a>
-                    </div><!-- .navbar-header -->
+                    </div>
+                    <!-- .navbar-header -->
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse navbar-right" id="htlfndr-first-nav">
                         <!-- List with sing up/sing in links -->
@@ -114,6 +115,7 @@
                             <li class="active">
                                 <a href="<c:url value="/"/>">home</a>
                             </li>
+
                             <li>
                                 <a href="blog-index.html">blog</a>
                             </li>
