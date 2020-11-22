@@ -2,6 +2,6 @@ package pl.bookingsystem.app.services;
 
 import java.util.List;
 
-public interface IHotelServices {
+public interface IHotelService {
     List<String> getAllHotelCities();
 }

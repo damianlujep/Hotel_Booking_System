@@ -115,6 +115,7 @@
                             <li class="active">
                                 <a href="<c:url value="/"/>">home</a>
                             </li>
+
                             <li>
                                 <a href="blog-index.html">blog</a>
                             </li>

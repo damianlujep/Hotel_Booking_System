@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class HotelService implements IHotelServices {
+public class HotelService implements IHotelService {
     private final HotelRepository hotelRepository;
 
     @Autowired

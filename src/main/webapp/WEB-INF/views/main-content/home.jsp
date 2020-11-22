@@ -80,13 +80,9 @@
 
                 <div id="htlfndr-input-4" class="htlfndr-input-wrapper">
                     <label for="htlfndr-dropdown" class="sr-only">The number of people in room</label>
-                    <select name="htlfndr-dropdown" id="htlfndr-dropdown" class="htlfndr-dropdown">
-                        <option value="1 adult">1 adult</option>
-                        <option value="2 adults in 1 room">2 adults in 1 room</option>
-                        <option value="3 adults in 1 room">3 adults in 1 room</option>
-                        <option value="4 adults in 1 room">4 adults in 1 room</option>
-                        <option value="2 adults in 2 room">2 adults in 2 room</option>
-                        <option value="need more">Need more?</option>
+                    <select name="htlfndr-dropdown" id="htlfndr-dropdown" class="htlfndr-dropdown" style="height: auto">
+                        <option value="1">1 guest</option>
+                        <option value="2">2 guests</option>
                     </select>
                 </div>
                 <!-- #htlfndr-input-4.htlfndr-input-wrapper -->
@@ -110,7 +106,7 @@
 <main role="main">
     <!-- Section with popular destinations -->
     <section class="container htlfndr-top-destinations">
-        <h2 class="htlfndr-section-title">our destinations</h2>
+        <h2 class="htlfndr-section-title">our hotels</h2>
         <div class="htlfndr-section-under-title-line"></div>
         <div class="row">
 

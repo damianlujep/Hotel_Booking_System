@@ -4721,7 +4721,7 @@ meter:-moz-meter-optimum::-moz-meter-bar {
 	color: #000;
 }
 .ui-selectmenu-open ul {
-	height: 136px;
+	height: auto;
 }
 .htlfndr-form-block input[type="radio"] + span,
 .htlfndr-contact-page input[type="radio"] + span {
