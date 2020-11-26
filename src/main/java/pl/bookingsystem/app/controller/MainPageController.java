@@ -28,7 +28,7 @@ public class MainPageController {
 
     @PostMapping("/searchingHandler")
     public ModelAndView searchHotelFromHandler(@ModelAttribute("hotelSearching") HotelSearchingDto hotelSearchingDto){
-        ModelAndView searchHotelPage = new ModelAndView("/main-content/home");
+        ModelAndView searchHotelPage = new ModelAndView("/main-content/search-results");
 
         return searchHotelPage;
     }
