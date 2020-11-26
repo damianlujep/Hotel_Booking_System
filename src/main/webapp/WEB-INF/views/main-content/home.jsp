@@ -57,7 +57,7 @@
         <div class="container">
             <h5>Where are you going?</h5>
             <%--Start Searching hotel form--%>
-            <form:form method="POST" modelAttribute="hotelSearching" class="htlfndr-search-form">
+            <form:form method="POST" action="/searchingHandler" modelAttribute="hotelSearching" class="htlfndr-search-form">
                 <div id="htlfndr-input-1" class="htlfndr-input-wrapper">
                     <form:select path="city" items="${allCitiesList}" id="htlfndr-city" class="htlfndr-dropdown"
                            placeholder="Enter city, region or district"/>
@@ -66,24 +66,24 @@
 
                 <div id="htlfndr-input-date-in" class="htlfndr-input-wrapper">
                     <label for="htlfndr-date-in" class="sr-only">Date in</label>
-                    <input type="text" name="htlfndr-date-in" id="htlfndr-date-in" class="search-hotel-input"/>
+                    <form:input path="arrivalDate" type="text" name="htlfndr-date-in" id="htlfndr-date-in" class="search-hotel-input"/>
                     <button type="button" class="htlfndr-clear-datepicker"></button>
                 </div>
-                <!-- #htlfndr-input-date-in.htlfndr-input-wrapper -->
+                <!-- #htlfndr-input-date-in.htlfndr-input-wraqfpper -->
 
                 <div id="htlfndr-input-date-out" class="htlfndr-input-wrapper">
                     <label for="htlfndr-date-out" class="sr-only">Date out</label>
-                    <input type="text" name="htlfndr-date-out" id="htlfndr-date-out" class="search-hotel-input"/>
+                    <form:input path="departureDate" type="text" name="htlfndr-date-out" id="htlfndr-date-out" class="search-hotel-input"/>
                     <button type="button" class="htlfndr-clear-datepicker"></button>
                 </div>
                 <!-- #htlfndr-input-date-out.htlfndr-input-wrapper -->
 
                 <div id="htlfndr-input-4" class="htlfndr-input-wrapper">
                     <label for="htlfndr-dropdown" class="sr-only">The number of people in room</label>
-                    <select name="htlfndr-dropdown" id="htlfndr-dropdown" class="htlfndr-dropdown" style="height: auto">
-                        <option value="1">1 guest</option>
-                        <option value="2">2 guests</option>
-                    </select>
+                    <form:select path="guestsQuantity" name="htlfndr-dropdown" id="htlfndr-dropdown" class="htlfndr-dropdown" style="height: auto">
+                        <form:option value="1">1 guest</form:option>
+                        <form:option value="2">2 guests</form:option>
+                    </form:select>
                 </div>
                 <!-- #htlfndr-input-4.htlfndr-input-wrapper -->
 
