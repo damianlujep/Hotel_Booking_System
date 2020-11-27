@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 <jsp:include page="/META-INF/jspf/main-content/header.jsp"/>
 
@@ -12,11 +14,11 @@
         <div class="htlfndr-card-title clearfix">
             <h2 class="pull-left">Sing in</h2>
         </div>
-        <form id="htlfndr-sing-in-form" method="post">
+        <form:form id="htlfndr-sing-in-form" method="POST" action="/authenticateMember">
             <h4>E-mail address</h4>
-            <input id="htlfndr-sing-in-email" class="htlfndr-input " type="text" name="htlfndr-sing-in-emal">
+            <input id="htlfndr-sing-in-email" class="htlfndr-input " type="text" name="username">
             <h4>Password</h4>
-            <input id="htlfndr-sing-in-pass" class="htlfndr-input " type="text" name="htlfndr-sing-in-pass">
+            <input id="htlfndr-sing-in-pass" class="htlfndr-input " type="password" name="password">
             <div class="clearfix">
                 <span>
                     Don't Have an Account?
@@ -26,7 +28,13 @@
             <div>
                 <input type="submit" value="Sing in" class="btn-primary">
             </div>
-        </form>
+            <p></p>
+            <c:if test="${param.error != null}" >
+                <div class="alert alert-danger" role="alert" style="text-align: center">
+                    Sorry! You entered a invalid username or password
+                </div>
+            </c:if>
+        </form:form>
     </div>
 </article>
 <!-- End of login form -->

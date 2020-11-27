@@ -33,17 +33,6 @@ public class MainPageController {
         return searchHotelPage;
     }
 
-    @GetMapping("/login")
-    public String showLoginForm(){
-        return "/main-content/login-form";
-    }
-
-
-    @GetMapping("/registration")
-    public String showRegistrationForm(){
-        return "/main-content/registration-form";
-    }
-
     @ModelAttribute ("allCitiesList")
     public List<String> allCitiesList(){
         return hotelService.getAllHotelCities();
