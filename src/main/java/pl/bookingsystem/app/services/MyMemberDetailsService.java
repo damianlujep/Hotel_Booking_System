@@ -15,13 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MyAdminDetailsService implements UserDetailsService {
+public class MyMemberDetailsService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
     @Autowired
-    public MyAdminDetailsService(MemberRepository memberRepository) {
-
+    public MyMemberDetailsService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
@@ -34,17 +33,12 @@ public class MyAdminDetailsService implements UserDetailsService {
 
         String memberRole = currentMember.getRole();
 
-        List<String> roles = new ArrayList<>();
-//        List<AdminRoles> allByAdmin_email = adminRolesRepository.findAllByAdmin_Email(email);
-//        for (AdminRoles a : allByAdmin_email){
-            roles.add(memberRole);
-//        }
-
         List<GrantedAuthority> grantList = new ArrayList<>();
         if (memberRole != null){
                 GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + memberRole);
+                grantList.add(authority);
         }
 
-        return new User(currentMember.getEmail(),currentMember.getPassword(),grantList);
+        return new User(currentMember.getEmail(), currentMember.getPassword(), grantList);
     }
 }
