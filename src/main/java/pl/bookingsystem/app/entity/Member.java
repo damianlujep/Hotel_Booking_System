@@ -33,9 +33,6 @@ public class Member {
     @Column(name = "day_of_birth")
     private LocalDate dayOfBirth;
 
-    @Column(length = 1)
-    private char gender;
-
     @Column(length = 25)
     private String role;
 }

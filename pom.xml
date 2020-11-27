@@ -105,6 +105,13 @@
 			<artifactId>jquery</artifactId>
 			<version>1.9.1</version>
 		</dependency>
+<!--	Password validation during Registration-->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>1.6.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

@@ -5,9 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Data
@@ -16,14 +14,18 @@ import java.time.LocalDate;
 public class HotelSearchingDto {
     @NotBlank
     private String city;
+
     @NotNull
     @DateTimeFormat(pattern = "d MMM yyyy")
+    @PastOrPresent
     private LocalDate arrivalDate;
+
     @NotNull
     @DateTimeFormat(pattern = "d MMM yyyy")
+    @Future
     private LocalDate departureDate;
+    
     @Max(2)
     @NotNull
     private int guestsQuantity;
-
 }
