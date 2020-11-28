@@ -19,10 +19,12 @@ import java.time.LocalDate;
 @ToString
 @PasswordMatches
 public class MemberDto {
-    @Size(min = 2)
+    @NotBlank
+    @Size(min = 2, message = "{Size.memberDto.firstName}")
     private String firstName;
 
-    @Size(min = 2)
+    @NotBlank
+    @Size(min = 2, message = "{Size.memberDto.lastName}")
     private String lastName;
 
     @NotBlank
@@ -36,12 +38,12 @@ public class MemberDto {
     @NotBlank
     private String rePassword;
 
-    @Size(min = 7, max = 20, message = "Enter a valid phone number")
     @NotBlank
+    @Size(min = 7, max = 20, message = "{ValidPhoneNumber.memberDto}")
     private String phone;
 
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past(message = "Please enter a valid Day of Birth")
+    @Past(message = "Enter a valid Day of Birth")
     private LocalDate dayOfBirth;
 }
