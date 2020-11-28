@@ -41,7 +41,7 @@ public class MemberDto {
     private String phone;
 
     @NotNull
-    @DateTimeFormat(pattern = "MM dd yyyy")
-    @Past
-    private LocalDate DayOfBirth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Please enter a valid Day of Birth")
+    private LocalDate dayOfBirth;
 }

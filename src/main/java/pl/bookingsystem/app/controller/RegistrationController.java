@@ -10,16 +10,16 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.MemberDto;
 import pl.bookingsystem.app.entity.Member;
 import pl.bookingsystem.app.error.UserAlreadyExistException;
-import pl.bookingsystem.app.services.MemberService;
+import pl.bookingsystem.app.services.IMemberService;
 
 import javax.validation.Valid;
 
 @Controller
 public class RegistrationController {
-    private final MemberService memberService;
+    private final IMemberService memberService;
 
     @Autowired
-    public RegistrationController(MemberService memberService) {
+    public RegistrationController(IMemberService memberService) {
         this.memberService = memberService;
     }
 
@@ -40,11 +40,11 @@ public class RegistrationController {
             memberRegistered = memberService.registerNewMember(memberDto);
         } catch (UserAlreadyExistException e){
             ModelAndView mav = new ModelAndView("/main-content/registration-form", "newMember", memberDto);
-            mav.addObject("message", "An account for that username/email already exists");
+            mav.addObject("message", "We have already a Member with the email " + memberDto.getEmail());
             return mav;
         }
 
-        return new ModelAndView("redirect: /", "memberRegistered", memberRegistered);
+        return new ModelAndView("redirect: login", "memberRegistered", memberRegistered);
 
     }
 

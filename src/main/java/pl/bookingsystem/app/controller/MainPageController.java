@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
-import pl.bookingsystem.app.services.HotelService;
+import pl.bookingsystem.app.services.IHotelService;
 
 import java.util.List;
 
 
 @Controller
 public class MainPageController {
-    private final HotelService hotelService;
+    private final IHotelService hotelService;
 
-    public MainPageController(HotelService hotelService) {
+    public MainPageController(IHotelService hotelService) {
         this.hotelService = hotelService;
     }
 

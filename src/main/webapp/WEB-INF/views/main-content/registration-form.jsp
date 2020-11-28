@@ -17,24 +17,53 @@
         <div class="row">
             <div class="col-md-6">
                 <h4>First name</h4>
-                <form id="htlfndr-sing-up-name" class="htlfndr-input " type="text" name="htlfndr-sing-up-name">
+                <form:input path="firstName" class="htlfndr-input " type="text"/>
+                <p></p>
+                <div>
+                    <form:errors path="firstName" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+                </div>
             </div>
             <div class="col-md-6">
                 <h4>Last name</h4>
-                <input id="htlfndr-sing-up-last-name" class="htlfndr-input " type="text"
-                       name="htlfndr-sing-up-last-name">
+                <form:input path="lastName" id="htlfndr-sing-up-last-name" class="htlfndr-input " type="text"/>
+                <p></p>
+                <div>
+                    <form:errors path="lastName" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+                </div>
             </div>
         </div>
-        <h4>E-mail address</h4>
-        <input class="htlfndr-input" type="text">
-        <h4>Password</h4>
-        <input class="htlfndr-input" type="text">
-        <h4>Confirm Password</h4>
-        <input class="htlfndr-input" type="text">
-        <h4>Phone</h4>
-        <input class="htlfndr-input" type="text">
-        <h4>Day of Birth</h4>
-        <input class="htlfndr-input" type="date">
+
+        <div>
+            <h4>E-mail address</h4>
+            <form:input path="email" class="htlfndr-input" type="text"/>
+            <p></p>
+            <form:errors path="email" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+        </div>
+        <div>
+            <h4>Password</h4>
+            <form:input path="password" class="htlfndr-input" type="text"/>
+            <p></p>
+            <form:errors path="password" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+        </div>
+        <div>
+            <h4>Confirm Password</h4>
+            <form:input path="rePassword" class="htlfndr-input" type="text"/>
+            <p></p>
+            <form:errors path="rePassword" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+        </div>
+        <div>
+            <h4>Phone</h4>
+            <form:input path="phone" class="htlfndr-input" type="text"/>
+            <p></p>
+            <form:errors path="phone" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
+        </div>
+        <div>
+            <h4>Day of Birth</h4>
+            <form:input path="dayOfBirth" class="htlfndr-input" type="date"/>
+            <p></p>
+            <form:errors path="dayOfBirth" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto" />
+        </div>
+
         <div class="clearfix">
             <span>
                 Have an Account?
@@ -44,6 +73,15 @@
         <div>
             <input type="submit" value="Sing up" class="btn-primary">
         </div>
+
+        <p></p>
+
+        <c:if test="${message != null}" >
+            <div class="alert alert-danger" role="alert" style="text-align: center;">
+                    ${message}
+            </div>
+        </c:if>
+
     </form:form>
 </div>
 </article>

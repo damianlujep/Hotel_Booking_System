@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MyMemberDetailsService myMemberDetailsService;
 
+    @Autowired
     public SecurityConfig(MyMemberDetailsService myAdminDetailsService) {
         this.myMemberDetailsService = myAdminDetailsService;
     }

@@ -2,10 +2,10 @@ package pl.bookingsystem.app.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.repository.HotelRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
