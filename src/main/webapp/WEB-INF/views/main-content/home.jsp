@@ -57,7 +57,7 @@
         <div class="container">
             <h5>Where are you going?</h5>
             <%--Start Searching hotel form--%>
-            <form:form method="POST" action="/searchingHandler" modelAttribute="hotelSearching" class="htlfndr-search-form">
+            <form:form method="POST" action="/booking/results" modelAttribute="hotelSearching" class="htlfndr-search-form">
                 <div id="htlfndr-input-1" class="htlfndr-input-wrapper">
                     <form:select path="city" items="${allCitiesList}" id="htlfndr-city" class="htlfndr-dropdown"
                            placeholder="Enter city, region or district"/>

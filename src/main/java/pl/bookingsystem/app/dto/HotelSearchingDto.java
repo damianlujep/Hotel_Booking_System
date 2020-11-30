@@ -17,7 +17,7 @@ public class HotelSearchingDto {
 
     @NotNull
     @DateTimeFormat(pattern = "d MMM yyyy")
-    @PastOrPresent
+    @FutureOrPresent
     private LocalDate arrivalDate;
 
     @NotNull

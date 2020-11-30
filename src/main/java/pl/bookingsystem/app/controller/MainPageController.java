@@ -1,15 +1,17 @@
 package pl.bookingsystem.app.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
+import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.services.IHotelService;
 
+import javax.validation.Valid;
 import java.util.List;
-
 
 @Controller
 public class MainPageController {
@@ -26,17 +28,13 @@ public class MainPageController {
         return homePage ;
     }
 
-    @PostMapping("/searchingHandler")
-    public ModelAndView searchHotelFromHandler(@ModelAttribute("hotelSearching") HotelSearchingDto hotelSearchingDto){
-        ModelAndView searchHotelPage = new ModelAndView("/main-content/search-results");
-
-        return searchHotelPage;
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return "/main-content/login-form";
     }
 
     @ModelAttribute ("allCitiesList")
     public List<String> allCitiesList(){
         return hotelService.getAllHotelCities();
     }
-
-
 }

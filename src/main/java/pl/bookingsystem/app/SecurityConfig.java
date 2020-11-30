@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(new EncodingFilter(), ChannelProcessingFilter.class);
 
         http.authorizeRequests()
-                        .antMatchers("/", "/login", "/searchingHandler", "/registration").permitAll() //allow public access
+                        .antMatchers("/", "/booking/**", "/login", "/searchingHandler", "/registration", "/test").permitAll() //allow public access
                         .antMatchers("/members/**").access("hasRole('ROLE_MEMBER')") //strony, które potrzebują user, admin
                         .antMatchers("/resources/**").permitAll()
                         .antMatchers("/css/**", "/js/**", "/images/**","/fonts/**").permitAll()

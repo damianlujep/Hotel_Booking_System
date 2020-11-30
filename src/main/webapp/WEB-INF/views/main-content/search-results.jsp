@@ -166,7 +166,7 @@
     </header>
 
     <!-- Start of main content -->
-    <div class="container">
+    <div class="container" style="padding-bottom: 5%">
         <!-- Progress steps -->
         <div class="htlfndr-steps">
             <ul class="htlfndr-progress">
@@ -213,158 +213,134 @@
                                 </div><!-- #htlfndr-input-date-out.htlfndr-input-wrapper -->
                             </div><!-- .htlfndr-float-input -->
 
-                            <!-- Section with selects -->
-                            <section class="htlfndr-select-block">
-                                <div class="htlfndr-input-wrapper htlfndr-small-select">
-                                    <label for="htlfndr-room" class="htlfndr-input-label">Room</label>
-                                    <select name="htlfndr-room" id="htlfndr-room" class="htlfndr-dropdown">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                </div><!-- .htlfndr-input-wrapper .htlfndr-small-select -->
-
-                                <div class="htlfndr-input-wrapper htlfndr-small-select">
-                                    <label for="htlfndr-adult" class="htlfndr-input-label">Adult</label>
+                                <div class="htlfndr-input-wrapper htlfndr-small-select" style="width: 55%">
+                                    <label for="htlfndr-adult" class="htlfndr-input-label">Guests</label>
                                     <select name="htlfndr-adult" id="htlfndr-adult" class="htlfndr-dropdown">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                                </div><!-- .htlfndr-input-wrapper .htlfndr-small-select -->
-
-                                <div class="htlfndr-input-wrapper htlfndr-small-select">
-                                    <label for="htlfndr-kids" class="htlfndr-input-label">Kids</label>
-                                    <select name="htlfndr-kids" id="htlfndr-kids" class="htlfndr-dropdown">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
                                     </select>
                                 </div><!-- .htlfndr-input-wrapper .htlfndr-small-select -->
                             </section>
-                            <input type="submit" value="search" class="btn-primary"/>
+                                <input type="submit" value="search" class="btn-primary"/>
                         </form>
                     </div><!-- .htlfndr-widget-content -->
                 </div><!-- .htlfndr-modify-search-aside-aside -->
 
-                <div class="htlfndr-search-details widget">
-                    <h3 class="widget-title">details</h3>
-                    <div class="htlfndr-widget-content">
-                        <form name="search-Spagere-details" id="search-Spagere-details">
-                            <!-- Price slider -->
-                            <label for="htlfndr-price-show" class="htlfndr-input-label">Price</label>
-                            <div id="htlfndr-price-slider"></div>
-                            <!-- First 'input' does not need a 'name' attribute.
-                             For the backend form processing use hidden fields below -->
-                            <input type="text" id="htlfndr-price-show" readonly />
-                            <input type="hidden" name="htlfndr-price-start" id="htlfndr-price-start" value="100"/>
-                            <input type="hidden" name="htlfndr-price-stop" id="htlfndr-price-stop" value="1000"/>
+<%--                <div class="htlfndr-search-details widget">--%>
+<%--                    <h3 class="widget-title">details</h3>--%>
+<%--                    <div class="htlfndr-widget-content">--%>
+<%--                        <form name="search-Spagere-details" id="search-Spagere-details">--%>
+<%--                            <!-- Price slider -->--%>
+<%--                            <label for="htlfndr-price-show" class="htlfndr-input-label">Price</label>--%>
+<%--                            <div id="htlfndr-price-slider"></div>--%>
+<%--                            <!-- First 'input' does not need a 'name' attribute.--%>
+<%--                             For the backend form processing use hidden fields below -->--%>
+<%--                            <input type="text" id="htlfndr-price-show" readonly />--%>
+<%--                            <input type="hidden" name="htlfndr-price-start" id="htlfndr-price-start" value="100"/>--%>
+<%--                            <input type="hidden" name="htlfndr-price-stop" id="htlfndr-price-stop" value="1000"/>--%>
 
-                            <!-- User Star Rating -->
-                            <p class="htlfndr-input-label">user rating</p>
-                            <div class="htlfndr-user-rating" data-rating="3"></div>
-                            <!-- The value of a hidden field is such as 'data-rating' attribute above -->
-                            <input type="hidden" name="htlfndr-rating" id="htlfndr-rating" value="3"/>
+<%--                            <!-- User Star Rating -->--%>
+<%--                            <p class="htlfndr-input-label">user rating</p>--%>
+<%--                            <div class="htlfndr-user-rating" data-rating="3"></div>--%>
+<%--                            <!-- The value of a hidden field is such as 'data-rating' attribute above -->--%>
+<%--                            <input type="hidden" name="htlfndr-rating" id="htlfndr-rating" value="3"/>--%>
 
-                            <!-- Checkboxes-->
-                            <p class="htlfndr-input-label">accomodation type</p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-apartment" name="htlfndr-check-apartment" />
-                                <label for="htlfndr-check-apartment">apartment <span>(5)</span></label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-hostel" name="htlfndr-check-hostel" />
-                                <label for="htlfndr-check-hostel">hostel <span>(5)</span></label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-Spagere" name="htlfndr-check-Spagere" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-Spagere">Spagere <span>(15)</span></label>
-                            </p>
+<%--                            <!-- Checkboxes-->--%>
+<%--                            <p class="htlfndr-input-label">accomodation type</p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-apartment" name="htlfndr-check-apartment" />--%>
+<%--                                <label for="htlfndr-check-apartment">apartment <span>(5)</span></label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-hostel" name="htlfndr-check-hostel" />--%>
+<%--                                <label for="htlfndr-check-hostel">hostel <span>(5)</span></label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-Spagere" name="htlfndr-check-Spagere" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-Spagere">Spagere <span>(15)</span></label>--%>
+<%--                            </p>--%>
 
-                            <p class="htlfndr-input-label">amenities</p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-television" name="htlfndr-check-television" />
-                                <label for="htlfndr-check-television">television</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-wi-fi" name="htlfndr-check-wi-fi" />
-                                <label for="htlfndr-check-wi-fi">Wi-Fi</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-swimming-pool" name="htlfndr-check-swimming-pool" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-swimming-pool">swimming pool</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-smoking-allowed" name="htlfndr-check-smoking-allowed" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-smoking-allowed">smoking allowed</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-wine-bar" name="htlfndr-check-wine-bar" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-wine-bar">wine bar</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-hot-tub" name="htlfndr-check-hot-tub" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-hot-tub">hot tub</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-air-conditioning" name="htlfndr-check-air-conditioning" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-air-conditioning">air conditioning</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-breakfast" name="htlfndr-check-breakfast" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-breakfast">breakfast</label>
-                            </p>
-                            <p class="htlfndr-checkbox-line">
-                                <input type="checkbox" id="htlfndr-check-free-parking" name="htlfndr-check-free-parking" disabled="disabled" checked="checked" />
-                                <label for="htlfndr-check-free-parking">free parking</label>
-                            </p>
-                        </form>
-                    </div><!-- .htlfndr-widget-content -->
-                </div><!-- .htlfndr-search-details -->
+<%--                            <p class="htlfndr-input-label">amenities</p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-television" name="htlfndr-check-television" />--%>
+<%--                                <label for="htlfndr-check-television">television</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-wi-fi" name="htlfndr-check-wi-fi" />--%>
+<%--                                <label for="htlfndr-check-wi-fi">Wi-Fi</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-swimming-pool" name="htlfndr-check-swimming-pool" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-swimming-pool">swimming pool</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-smoking-allowed" name="htlfndr-check-smoking-allowed" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-smoking-allowed">smoking allowed</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-wine-bar" name="htlfndr-check-wine-bar" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-wine-bar">wine bar</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-hot-tub" name="htlfndr-check-hot-tub" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-hot-tub">hot tub</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-air-conditioning" name="htlfndr-check-air-conditioning" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-air-conditioning">air conditioning</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-breakfast" name="htlfndr-check-breakfast" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-breakfast">breakfast</label>--%>
+<%--                            </p>--%>
+<%--                            <p class="htlfndr-checkbox-line">--%>
+<%--                                <input type="checkbox" id="htlfndr-check-free-parking" name="htlfndr-check-free-parking" disabled="disabled" checked="checked" />--%>
+<%--                                <label for="htlfndr-check-free-parking">free parking</label>--%>
+<%--                            </p>--%>
+<%--                        </form>--%>
+<%--                    </div><!-- .htlfndr-widget-content -->--%>
+<%--                </div><!-- .htlfndr-search-details -->--%>
             </aside><!-- .htlfndr-sidebar .htlfndr-sidebar-in-left -->
 
-            <main class="col-sm-8 col-md-9 col-lg-9 htlfndr-search-result htlfndr-grid-view" role="main">
-                <h2 class="htlfndr-search-result-title"><span>125</span> results found</h2>
+            <main class="col-sm-8 col-md-9 col-lg-9 htlfndr-search-result htlfndr-row-view" role="main">
+                <h2 class="htlfndr-search-result-title"><span>${hotelFoundList.size()}</span> result(s) found</h2>
                 <!-- Sorting navigation section -->
                 <div class="htlfndr-search-result-sorting row">
                     <div class="col-md-12">
 
                         <!-- Sorting elements -->
-                        <div class="dropdown htlfndr-sort">
-                            <a class="dropdown-toggle" id="htlfndr-sort-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button">
-                                Sort by
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="htlfndr-sort-1">
-                                <li><a href="#" id="htlfndr-sort-by-price">price</a></li>
-                                <li><a href="#" id="htlfndr-sort-by-rating">rating</a></li>
-                                <li><a href="#" id="htlfndr-sort-by-popular">popular</a></li>
-                            </ul>
-                        </div><!-- .dropdown .htlfndr-sort -->
+<%--                        <div class="dropdown htlfndr-sort">--%>
+<%--                            <a class="dropdown-toggle" id="htlfndr-sort-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button">--%>
+<%--                                Sort by--%>
+<%--                            </a>--%>
+<%--                            <ul class="dropdown-menu" aria-labelledby="htlfndr-sort-1">--%>
+<%--                                <li><a href="#" id="htlfndr-sort-by-price">price</a></li>--%>
+<%--                                <li><a href="#" id="htlfndr-sort-by-rating">rating</a></li>--%>
+<%--                                <li><a href="#" id="htlfndr-sort-by-popular">popular</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div><!-- .dropdown .htlfndr-sort -->--%>
 
                         <!-- Change number hotels to show -->
-                        <div class="dropdown htlfndr-show-number-hotels">
-                            <a class="dropdown-toggle" id="htlfndr-sort-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button">
-                                Show <span>9 items</span>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="htlfndr-sort-2">
-                                <li><a href="#" id="htlfndr-show-9" data-number="9">9 items</a></li>
-                                <li><a href="#" id="htlfndr-show-18" data-number="18">18 items</a></li>
-                                <li><a href="#" id="htlfndr-show-27" data-number="27">27 items</a></li>
-                            </ul>
-                        </div><!-- .dropdown .htlfndr-show-number-hotels -->
+<%--                        <div class="dropdown htlfndr-show-number-hotels">--%>
+<%--                            <a class="dropdown-toggle" id="htlfndr-sort-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="button">--%>
+<%--                                Show <span>9 items</span>--%>
+<%--                            </a>--%>
+<%--                            <ul class="dropdown-menu" aria-labelledby="htlfndr-sort-2">--%>
+<%--                                <li><a href="#" id="htlfndr-show-9" data-number="9">9 items</a></li>--%>
+<%--                                <li><a href="#" id="htlfndr-show-18" data-number="18">18 items</a></li>--%>
+<%--                                <li><a href="#" id="htlfndr-show-27" data-number="27">27 items</a></li>--%>
+<%--                            </ul>--%>
+<%--                        </div><!-- .dropdown .htlfndr-show-number-hotels -->--%>
 
                         <!-- Change view buttons -->
                         <div class="htlfndr-view">
-                            <button id="htlfndr-grid" class="htlfndr-active" data-toggle="tooltip" data-placement="top" title="Grid view" role="button">
+                            <button id="htlfndr-grid" data-toggle="tooltip" data-placement="top" title="Grid view" role="button">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </button>
-                            <button id="htlfndr-row" data-toggle="tooltip" data-placement="top" title="Row view" role="button">
+                            <button id="htlfndr-row" class="htlfndr-active" data-toggle="tooltip" data-placement="top" title="Row view" role="button">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -375,14 +351,15 @@
                 </div><!-- .htlfndr-search-result-sorting .row -->
 
                 <section class="row htlfndr-search-result-content">
-                    <div class="col-md-4 htlfndr-hotel-post-wrapper">
+                    <c:forEach items="${hotelFoundList}" var="hotelAvailable">
+                    <div class="htlfndr-hotel-post-wrapper col-md-12">
                         <div class="htlfndr-hotel-post">
                             <a href="Spagere-page-v1.html" class="htlfndr-hotel-thumbnail">
                                 <img src="http://placehold.it/260x155" alt="pic" />
                             </a>
                             <div class="htlfndr-hotel-description">
                                 <div class="htlfndr-description-content">
-                                    <h2 class="htlfndr-entry-title"><a href="Spagere-page-v1.html">King Size Bedroom</a></h2>
+                                    <h2 class="htlfndr-entry-title"><a href="Spagere-page-v1.html">${hotelAvailable.name}</a></h2>
                                     <div class="htlfndr-rating-stars" data-rating="5">
                                         <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
                                         <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
@@ -391,39 +368,40 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>&nbsp;
                                         <p class="htlfndr-hotel-reviews">(<span>188</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${hotelAvailable.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
-                                <a href="Spagere-page-v1.html" role="button" class="htlfndr-select-hotel-button">select</a>
-                                <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>
-                                    <span class="cost">100</span>
-                                </div><!-- .htlfndr-Spagere-price -->
+                                <a href="<c:url value="/booking/hotel/${hotelAvailable.id}"/>" role="button" class="htlfndr-select-hotel-button">select</a>
+<%--                                <div class="htlfndr-hotel-price">--%>
+<%--                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>--%>
+<%--                                    <span class="cost">100</span>--%>
+<%--                                </div><!-- .htlfndr-Spagere-price -->--%>
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
                     </div><!-- .col-md-4.htlfndr-Spagere-post-wrapper -->
+                    </c:forEach>
 
                 </section><!-- .row .htlfndr-search-result-content -->
 
                 <!-- Pagination -->
-                <nav class="htlfndr-pagination">
-                    <ul class="pagination">
-                        <li class="htlfndr-left">
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true" class="fa fa-angle-left"></span>
-                            </a>
-                        </li>
-                        <li class="current"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li class="htlfndr-right">
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true" class="fa fa-angle-right"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav><!-- .htlfndr-pagination -->
+<%--                <nav class="htlfndr-pagination">--%>
+<%--                    <ul class="pagination">--%>
+<%--                        <li class="htlfndr-left">--%>
+<%--                            <a href="#" aria-label="Previous">--%>
+<%--                                <span aria-hidden="true" class="fa fa-angle-left"></span>--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
+<%--                        <li class="current"><a href="#">1</a></li>--%>
+<%--                        <li><a href="#">2</a></li>--%>
+<%--                        <li><a href="#">3</a></li>--%>
+<%--                        <li><a href="#">4</a></li>--%>
+<%--                        <li class="htlfndr-right">--%>
+<%--                            <a href="#" aria-label="Next">--%>
+<%--                                <span aria-hidden="true" class="fa fa-angle-right"></span>--%>
+<%--                            </a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </nav><!-- .htlfndr-pagination -->--%>
             </main><!-- .htlfndr-search-result -->
         </div><!-- .row -->
     </div><!-- .container -->
@@ -431,7 +409,7 @@
 
     <!-- Start of the Footer -->
     <footer class="htlfndr-footer">
-        <button class="htlfndr-button-to-top" role="button"><span>Back to top</span></button><!-- Button "To top" -->
+        <button class="htlfndr-button-to-top"><span>Back to top</span></button><!-- Button "To top" -->
 
         <div class="widget-wrapper">
             <div class="container">
