@@ -371,7 +371,7 @@
                                     <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${hotelAvailable.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
-                                <a href="Spagere-page-v1.html" role="button" class="htlfndr-select-hotel-button">select</a>
+                                <a href="<c:url value="/booking/hotel/${hotelAvailable.id}"/>" role="button" class="htlfndr-select-hotel-button">select</a>
 <%--                                <div class="htlfndr-hotel-price">--%>
 <%--                                    <span class="htlfndr-from">from</span> <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>--%>
 <%--                                    <span class="cost">100</span>--%>
