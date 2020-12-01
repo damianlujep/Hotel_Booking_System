@@ -13,7 +13,7 @@
                 <aside class="col-xs-12 col-sm-6 col-md-3 htlfndr-widget-column">
                     <div class="widget">
                         <a class="htlfndr-logo navbar-brand" href="#">
-                            <img src="images/logo.png" height="20" width="30" alt="Logo" />
+                            <img src="<c:url value="/images/logo.png"/>" height="20" width="30" alt="Logo" />
                             <p class="htlfndr-logo-text">hotel <span>finder</span></p>
                         </a>
                         <hr />
@@ -85,6 +85,8 @@
 <!-- Include Jquery UI script file -->
 <script src="<c:url value="/js/jquery-ui.min.js"/>"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+<!-- Include Jquery UI responsive tabs script file -->
+<script src="<c:url value="/js/jquery.responsiveTabs.min.js"/>"></script>
 <!-- Include Query UI Touch Punch is a small hack that enables the use
 of touch events on sites using the jQuery UI user interface library. -->
 <script src="<c:url value="/js/jquery.ui.touch-punch.min.js"/>"></script>

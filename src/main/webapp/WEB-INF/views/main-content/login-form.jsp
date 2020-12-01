@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
+<%--Head, header and Navigation Content for website--%>
 <jsp:include page="/META-INF/jspf/main-content/header.jsp"/>
 
 <noscript><h2>You have JavaScript disabled!</h2></noscript>

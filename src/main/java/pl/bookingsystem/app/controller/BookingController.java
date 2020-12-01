@@ -10,12 +10,13 @@ import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.services.IHotelService;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
-
     private final IHotelService hotelService;
 
     @Autowired
@@ -31,6 +32,20 @@ public class BookingController {
 
         List<Hotel> hotelFoundList = hotelService.findHotelByCityAndArrivalDepartureDates(hotelSearchingDto);
         return new ModelAndView("/main-content/search-results", "hotelFoundList", hotelFoundList);
+    }
+
+    @GetMapping("/hotel/{hotelId}")
+    public ModelAndView displayHotelSelectedPage(@PathVariable int hotelId){
+        String hotelPagePath = hotelService.findHotelSelectedPage(hotelId);
+        BigDecimal lowestHotelRate = hotelService.findLowestHotelRate(hotelId);
+
+        return new ModelAndView("/hotel-pages/" + hotelPagePath, "lowestHotelRate",lowestHotelRate.setScale(2, RoundingMode.HALF_UP));
+    }
+
+    @GetMapping("/roomsAvailable/{hotelId}")
+    public ModelAndView searchAndShowRoomsAvailable(@PathVariable int hotelId){
+        return new ModelAndView("/main-content/rooms-available-results");
+
     }
 
 }

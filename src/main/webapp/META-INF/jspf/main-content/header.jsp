@@ -51,7 +51,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="htlfndr-logo navbar-brand" href="<c:url value="/"/>">
-                            <img src="images/logo.png" alt="Logo" />
+                            <img src="<c:url value="/images/logo.png"/>" alt="Logo" />
                             <p class="htlfndr-logo-text">Spagere <span>finder</span></p>
                         </a>
                     </div>
