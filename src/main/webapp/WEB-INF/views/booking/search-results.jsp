@@ -34,38 +34,43 @@
                     <h3 class="widget-title">modify search</h3>
                     <div class="htlfndr-widget-content">
 
-                        <form name="search-Spagere" id="search-Spagere">
+                        <form:form method="POST" action="/booking/results" modelAttribute="hotelSearching" name="search-hotel" id="search-hotel">
                             <label for="htlfndr-city" class="htlfndr-input-label">Your destination</label>
                             <div id="htlfndr-input-1" class="htlfndr-input-wrapper">
-                                <input type="text" name="htlfndr-city" id="htlfndr-city" class="search-hotel-input" placeholder="Enter city, region" />
-                            </div><!-- #htlfndr-input-1.htlfndr-input-wrapper -->
+                                <form:select path="city" items="${allCitiesList}" id="htlfndr-city" class="htlfndr-dropdown"
+                                             placeholder="Enter city, region or district"/>
+                            </div>
+                            <!-- #htlfndr-input-1.htlfndr-input-wrapper -->
 
                             <div class="htlfndr-float-input first-float">
                                 <label for="htlfndr-date-in" class="htlfndr-input-label">Check in</label>
                                 <div id="htlfndr-input-date-in" class="htlfndr-input-wrapper">
-                                    <input type="text" name="htlfndr-date-in" id="htlfndr-date-in" class="search-hotel-input"/>
+                                    <label for="htlfndr-date-in" class="sr-only">Date in</label>
+                                    <form:input path="arrivalDate" type="text" name="htlfndr-date-in" id="htlfndr-date-in" class="search-hotel-input"/>
                                     <button type="button" class="htlfndr-clear-datepicker"></button>
-                                </div><!-- #htlfndr-input-date-in.htlfndr-input-wrapper -->
+                                </div>
+                                <!-- #htlfndr-input-date-in.htlfndr-input-wrapper -->
                             </div><!-- .htlfndr-float-input -->
 
                             <div class="htlfndr-float-input">
                                 <label for="htlfndr-date-out" class="htlfndr-input-label">Check out</label>
                                 <div id="htlfndr-input-date-out" class="htlfndr-input-wrapper">
-                                    <input type="text" name="htlfndr-date-out" id="htlfndr-date-out" class="search-hotel-input"/>
+                                    <form:input path="departureDate" type="text" name="htlfndr-date-out" id="htlfndr-date-out" class="search-hotel-input"/>
                                     <button type="button" class="htlfndr-clear-datepicker"></button>
-                                </div><!-- #htlfndr-input-date-out.htlfndr-input-wrapper -->
+                                </div>
+                                <!-- #htlfndr-input-date-out.htlfndr-input-wrapper -->
                             </div><!-- .htlfndr-float-input -->
 
                                 <div class="htlfndr-input-wrapper htlfndr-small-select" style="width: 55%">
                                     <label for="htlfndr-adult" class="htlfndr-input-label">Guests</label>
-                                    <select name="htlfndr-adult" id="htlfndr-adult" class="htlfndr-dropdown">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
+                                    <form:select path="guestsQuantity" name="htlfndr-dropdown" id="htlfndr-adult" class="htlfndr-dropdown" style="height: auto">
+                                        <form:option value="1">1</form:option>
+                                        <form:option value="2">2</form:option>
+                                    </form:select>
                                 </div><!-- .htlfndr-input-wrapper .htlfndr-small-select -->
                             </section>
                                 <input type="submit" value="search" class="btn-primary"/>
-                        </form>
+                        </form:form>
                     </div><!-- .htlfndr-widget-content -->
                 </div><!-- .htlfndr-modify-search-aside-aside -->
 
@@ -146,7 +151,12 @@
             </aside><!-- .htlfndr-sidebar .htlfndr-sidebar-in-left -->
 
             <main class="col-sm-8 col-md-9 col-lg-9 htlfndr-search-result htlfndr-row-view" role="main">
-                <h2 class="htlfndr-search-result-title"><span>${hotelFoundList.size()}</span> result(s) found</h2>
+                <h2 class="htlfndr-search-result-title">
+                    <span style="color: #f457a1">${hotelFoundList.size()}</span>
+                    result(s) found in
+                    <span>Kraków</span>
+                    from <span style="color: #f457a1">2020-12-01</span>
+                    to <span style="color:#f457a1;">2020-12-02</span></h2>
                 <!-- Sorting navigation section -->
                 <div class="htlfndr-search-result-sorting row">
                     <div class="col-md-12">

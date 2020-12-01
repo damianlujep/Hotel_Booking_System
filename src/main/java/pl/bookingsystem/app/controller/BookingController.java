@@ -31,7 +31,11 @@ public class BookingController {
         }
 
         List<Hotel> hotelFoundList = hotelService.findHotelByCityAndArrivalDepartureDates(hotelSearchingDto);
-        return new ModelAndView("booking/search-results", "hotelFoundList", hotelFoundList);
+        ModelAndView results = new ModelAndView("booking/search-results", "hotelFoundList", hotelFoundList);
+        HotelSearchingDto modifySearchDto = new HotelSearchingDto();
+        modifySearchDto.setCity(hotelSearchingDto.getCity());
+        results.addObject("hotelSearching",modifySearchDto);
+        return results;
     }
 
     @GetMapping("/hotel/{hotelId}")
@@ -52,6 +56,11 @@ public class BookingController {
     public ModelAndView displayRoomAndRateTypePage(@PathVariable int roomTypeId, @PathVariable int ratePlanId){
         return new ModelAndView("booking/room-pages/double-room-members");
 
+    }
+
+    @ModelAttribute ("allCitiesList")
+    public List<String> allCitiesList(){
+        return hotelService.getAllHotelCities();
     }
 
 
