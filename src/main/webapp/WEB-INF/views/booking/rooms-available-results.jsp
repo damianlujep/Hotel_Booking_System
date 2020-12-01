@@ -13,14 +13,14 @@
         <!-- Progress steps -->
         <div class="htlfndr-steps">
             <ul class="htlfndr-progress">
-                <li><a href="search-result.html">
+                <li>
                     <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">results</span></a>
                 </li>
-                <li><a href="search-result.html">
+                <li><a href="javascript: window.history.go(-1)">
                     <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">Hotel</span></a>
                 </li>
                 <li  class="htlfndr-active-step">
-                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">room</span>
+                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">rooms and rates</span>
                 </li>
                 <li>
                     <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
@@ -73,7 +73,7 @@
                                     <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
-                                <a href="hotel-room-page.html" role="button" class="htlfndr-select-hotel-button">select</a>
+                                <a href="<c:url value="/booking/roomAndRate/1/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
                                     <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>
                                 </div><!-- .htlfndr-Spagere-price -->
@@ -100,7 +100,7 @@
                                     <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
-                                <a href="hotel-room-page.html" role="button" class="htlfndr-select-hotel-button">select</a>
+                                <a href="<c:url value="/booking/roomAndRate/1/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
                                     <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>
                                 </div><!-- .htlfndr-Spagere-price -->
@@ -133,7 +133,7 @@
                                 <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
                                 <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                             </div><!-- .htlfndr-description-content -->
-                            <a href="<c:url value="/login"/>" role="button" class="htlfndr-select-hotel-button">select</a>
+                            <a href="<c:url value="/booking/roomAndRate/1/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                             <div class="htlfndr-hotel-price">
                                 <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
                             </div><!-- .htlfndr-Spagere-price -->
@@ -160,7 +160,7 @@
                                 <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
                                 <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                             </div><!-- .htlfndr-description-content -->
-                            <a href="<c:url value="/login"/>" role="button" class="htlfndr-select-hotel-button">select</a>
+                            <a href="<c:url value="/booking/roomAndRate/1/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                             <div class="htlfndr-hotel-price">
                                 <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
                             </div><!-- .htlfndr-Spagere-price -->

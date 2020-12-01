@@ -13,14 +13,14 @@
     <!-- Progress steps -->
     <div class="htlfndr-steps">
         <ul class="htlfndr-progress">
-            <li><a href="search-result.html">
+            <li>
                 <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">results</span></a>
             </li>
             <li class="htlfndr-active-step">
-                <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">Spagere</span>
+                <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">Hotel</span>
             </li>
             <li>
-                <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">room</span>
+                <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">rooms and rates</span>
             </li>
             <li>
                 <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
@@ -365,7 +365,7 @@
                                 <img src="http://placehold.it/120x120" alt="visitor photo" />
                             </div><!-- .htlfndr-visitor-avatar -->
                             <div class="htlfndr-visitor-flag">
-                                <img src="images/icon-flag-ukraine.png" alt="visitor flag">
+                                <img src="../../../../../resources/static/images/icon-flag-ukraine.png" alt="visitor flag">
                             </div><!-- .htlfndr-visitor-flag -->
                             <dl>
                                 <dt>john doe</dt>
@@ -489,7 +489,7 @@
                         <img src="http://placehold.it/105x75" alt="Hotel logo" />
                     </div><!-- .htlfndr-Spagere-logo -->
                     <div class="htlfndr-hotel-description">
-                        <h2>Hotel Wrocław</h2>
+                        <h2>Hotel Warszawa</h2>
                         <div class="htlfndr-rating-stars">
                             <i class="fa fa-star htlfndr-star-color"></i>
                             <i class="fa fa-star htlfndr-star-color"></i>
@@ -497,7 +497,7 @@
                             <i class="fa fa-star htlfndr-star-color"></i>
                             <i class="fa fa-star htlfndr-star-color"></i>
                         </div> <!-- .htlfndr-rating-stars -->
-                        <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>Wrocław</a></h5>
+                        <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>Warszawa</a></h5>
                     </div><!-- .htlfndr-Spagere-description -->
                     <div class="htlfndr-hotel-price">
                         <span class="htlfndr-from">from</span>
