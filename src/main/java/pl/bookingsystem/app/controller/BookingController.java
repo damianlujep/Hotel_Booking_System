@@ -15,7 +15,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
-
     private final IHotelService hotelService;
 
     @Autowired
@@ -31,6 +30,13 @@ public class BookingController {
 
         List<Hotel> hotelFoundList = hotelService.findHotelByCityAndArrivalDepartureDates(hotelSearchingDto);
         return new ModelAndView("/main-content/search-results", "hotelFoundList", hotelFoundList);
+    }
+
+    @GetMapping("/hotel/{id}")
+    public ModelAndView displayHotelSelectedPage(@PathVariable int id){
+        String hotelPagePath = hotelService.findHotelSelectedPage(id);
+
+        return new ModelAndView("/hotel-pages/" + hotelPagePath);
     }
 
 }

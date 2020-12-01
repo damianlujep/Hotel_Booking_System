@@ -8,4 +8,5 @@ import java.util.List;
 public interface IHotelService {
     List<String> getAllHotelCities();
     List<Hotel> findHotelByCityAndArrivalDepartureDates(HotelSearchingDto hotelSearchingDto);
+    String findHotelSelectedPage(int hotelId);
 }
