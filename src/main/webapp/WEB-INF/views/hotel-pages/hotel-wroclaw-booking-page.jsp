@@ -489,7 +489,7 @@
                         <img src="http://placehold.it/105x75" alt="Hotel logo" />
                     </div><!-- .htlfndr-Spagere-logo -->
                     <div class="htlfndr-hotel-description">
-                        <h2>Hotel Kraków</h2>
+                        <h2>Hotel Wrocław</h2>
                         <div class="htlfndr-rating-stars">
                             <i class="fa fa-star htlfndr-star-color"></i>
                             <i class="fa fa-star htlfndr-star-color"></i>
@@ -497,7 +497,7 @@
                             <i class="fa fa-star htlfndr-star-color"></i>
                             <i class="fa fa-star htlfndr-star-color"></i>
                         </div> <!-- .htlfndr-rating-stars -->
-                        <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>Kraków</a></h5>
+                        <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>Wrocław</a></h5>
                     </div><!-- .htlfndr-Spagere-description -->
                     <div class="htlfndr-hotel-price">
                         <span class="htlfndr-from">from</span>

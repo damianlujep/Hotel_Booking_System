@@ -6,8 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.repository.CalendarAvailabilityRepository;
+import pl.bookingsystem.app.repository.CalendarRateRepository;
 import pl.bookingsystem.app.repository.HotelRepository;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,11 +19,13 @@ import java.util.stream.Collectors;
 @Transactional
 public class HotelService implements IHotelService {
     private final HotelRepository hotelRepository;
+    private final CalendarRateRepository calendarRateRepository;
     private final CalendarAvailabilityRepository calendarAvailabilityRepository;
 
     @Autowired
-    public HotelService(HotelRepository hotelRepository, CalendarAvailabilityRepository calendarAvailabilityRepository) {
+    public HotelService(HotelRepository hotelRepository, CalendarRateRepository calendarRateRepository, CalendarAvailabilityRepository calendarAvailabilityRepository) {
         this.hotelRepository = hotelRepository;
+        this.calendarRateRepository = calendarRateRepository;
         this.calendarAvailabilityRepository = calendarAvailabilityRepository;
     }
 
@@ -62,5 +66,11 @@ public class HotelService implements IHotelService {
         }
 
         return bookingHotelPages.get(hotelSelected);
+    }
+
+    @Override
+    public BigDecimal findLowestHotelRate(int hotelID) {
+        Hotel currentHotel = hotelRepository.getOne(hotelID);
+        return calendarRateRepository.lowestHotelRate(currentHotel);
     }
 }
