@@ -31,7 +31,7 @@ public class BookingController {
         }
 
         List<Hotel> hotelFoundList = hotelService.findHotelByCityAndArrivalDepartureDates(hotelSearchingDto);
-        return new ModelAndView("/main-content/search-results", "hotelFoundList", hotelFoundList);
+        return new ModelAndView("booking/search-results", "hotelFoundList", hotelFoundList);
     }
 
     @GetMapping("/hotel/{hotelId}")
@@ -39,13 +39,20 @@ public class BookingController {
         String hotelPagePath = hotelService.findHotelSelectedPage(hotelId);
         BigDecimal lowestHotelRate = hotelService.findLowestHotelRate(hotelId);
 
-        return new ModelAndView("/hotel-pages/" + hotelPagePath, "lowestHotelRate",lowestHotelRate.setScale(2, RoundingMode.HALF_UP));
+        return new ModelAndView("/booking/hotel-pages/" + hotelPagePath, "lowestHotelRate",lowestHotelRate.setScale(2, RoundingMode.HALF_UP));
     }
 
     @GetMapping("/roomsAvailable/{hotelId}")
     public ModelAndView searchAndShowRoomsAvailable(@PathVariable int hotelId){
-        return new ModelAndView("/main-content/rooms-available-results");
+        return new ModelAndView("booking/rooms-available-results");
 
     }
+
+    @GetMapping("/roomAndRate/{roomTypeId}/{ratePlanId}")
+    public ModelAndView displayRoomAndRateTypePage(@PathVariable int roomTypeId, @PathVariable int ratePlanId){
+        return new ModelAndView("booking/room-pages/double-room-members");
+
+    }
+
 
 }

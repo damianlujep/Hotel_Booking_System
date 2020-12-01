@@ -1,16 +1,12 @@
 package pl.bookingsystem.app.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
-import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.services.IHotelService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller

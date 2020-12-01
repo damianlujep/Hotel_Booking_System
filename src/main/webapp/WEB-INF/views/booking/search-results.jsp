@@ -20,7 +20,7 @@
                     <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">hotel</span>
                 </li>
                 <li>
-                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">room</span>
+                    <span class="htlfndr-step-number">3</span> <span class="htlfndr-step-description">rooms and rates</span>
                 </li>
                 <li>
                     <span class="htlfndr-step-number">4</span> <span class="htlfndr-step-description">payment</span>
