@@ -42,7 +42,12 @@ public class HotelService implements IHotelService {
     @Override
     public List<Hotel> findHotelByCityAndArrivalDepartureDates(HotelSearchingDto search) {
         return calendarAvailabilityRepository.findHotelByCityAndArrivalDepartureDates(
-                search.getCity(), search.getArrivalDate(), search.getDepartureDate());
+                search.getCity(), search.getArrivalDate(), (search.getDepartureDate()).minusDays(1));
+    }
+
+    @Override
+    public Hotel findHotelById(int hotelId) {
+        return hotelRepository.getOne(hotelId);
     }
 
     @Override

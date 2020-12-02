@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
+
 import pl.bookingsystem.app.services.IHotelService;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class MainPageController {
 
     public MainPageController(IHotelService hotelService) {
         this.hotelService = hotelService;
+
     }
 
     @GetMapping("/")

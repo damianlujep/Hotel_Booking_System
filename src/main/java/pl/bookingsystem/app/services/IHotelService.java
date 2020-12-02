@@ -9,6 +9,7 @@ import java.util.List;
 public interface IHotelService {
     List<String> getAllHotelCities();
     List<Hotel> findHotelByCityAndArrivalDepartureDates(HotelSearchingDto hotelSearchingDto);
+    Hotel findHotelById(int hotelId);
     String findHotelSelectedPage(int hotelId);
     BigDecimal findLowestHotelRate(int hotelId);
 }

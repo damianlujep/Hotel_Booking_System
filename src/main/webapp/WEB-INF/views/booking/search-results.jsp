@@ -154,9 +154,9 @@
                 <h2 class="htlfndr-search-result-title">
                     <span style="color: #f457a1">${hotelFoundList.size()}</span>
                     result(s) found in
-                    <span>Kraków</span>
-                    from <span style="color: #f457a1">2020-12-01</span>
-                    to <span style="color:#f457a1;">2020-12-02</span></h2>
+                    <span>${newBookingInProcess.city}</span>
+                    from <span style="color: #f457a1">${newBookingInProcess.arrivalDate}</span>
+                    to <span style="color:#f457a1;">${newBookingInProcess.departureDate}</span></h2>
                 <!-- Sorting navigation section -->
                 <div class="htlfndr-search-result-sorting row">
                     <div class="col-md-12">
