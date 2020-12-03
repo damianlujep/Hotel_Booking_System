@@ -22,10 +22,6 @@ public class RatePlanStructure {
     private Hotel hotelId;
 
     @ManyToOne
-    @JoinColumn(name = "room_type_id")
-    private RoomType roomTypeId;
-
-    @ManyToOne
     @JoinColumn(name = "rate_plan_id")
     private RatePlan ratePlan;
 
