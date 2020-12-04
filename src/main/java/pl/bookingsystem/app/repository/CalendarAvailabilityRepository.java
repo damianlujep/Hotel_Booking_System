@@ -13,8 +13,7 @@ public interface CalendarAvailabilityRepository extends JpaRepository<CalendarAv
     @Query("SELECT DISTINCT c.hotelId FROM CalendarAvailability c WHERE c.hotelId.city = ?1 AND c.availableRooms > 0 AND (c.date BETWEEN ?2 AND ?3)")
     List<Hotel> findHotelByCityAndArrivalDepartureDates(String city, LocalDate arrivalDate, LocalDate departureDate);
 
-//    @Query(SELECT DISTINCT c.room_type_id FROM calendar_availability c where (c.date BETWEEN '2020-12-05' AND '2020-12-06')
     @Query("SELECT DISTINCT c.roomTypeId FROM CalendarAvailability c WHERE c.hotelId = ?1 AND c.availableRooms > 0 AND (c.date BETWEEN ?2 AND ?3)")
-    List<RoomType> findAllRoomTypesAvailableByDate(Hotel hotelId, LocalDate arrivalDat, LocalDate departureDate);
+    List<RoomType> findAllRoomTypesAvailableByDate(Hotel hotelId, LocalDate arrivalDate, LocalDate departureDate);
 
 }

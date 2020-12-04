@@ -78,7 +78,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>188</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -107,7 +107,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>188</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -138,7 +138,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/2"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -169,7 +169,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/2"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -209,7 +209,7 @@
                                                         <i class="fa fa-star htlfndr-star-color"></i>
                                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                                     </div><!-- .htlfndr-rating-stars -->
-                                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                                 </div><!-- .htlfndr-description-content -->
                                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/3"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -238,7 +238,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/3"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -269,7 +269,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/4"/>" role="button" class="htlfndr-select-hotel-button">select</a>
@@ -300,7 +300,7 @@
                                         <i class="fa fa-star htlfndr-star-color"></i>
                                         <p class="htlfndr-hotel-reviews">(<span>118</span> reviews)</p>
                                     </div><!-- .htlfndr-rating-stars -->
-                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>san francisco united states</a></h5>
+                                    <h5 class="htlfndr-hotel-location"><a href="#"><i class="fa fa-map-marker"></i>${newBookingInProcess.city}</a></h5>
                                     <p class="htlfndr-last-booking">Last booking: <span>14</span> hours ago</p>
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/4"/>" role="button" class="htlfndr-select-hotel-button">select</a>
