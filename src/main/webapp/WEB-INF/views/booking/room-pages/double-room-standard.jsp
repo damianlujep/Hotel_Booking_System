@@ -32,7 +32,7 @@
             <main id="htlfndr-main-content" class="col-sm-12 col-md-8 col-lg-9 htlfndr-hotel-single-content" role="main">
                 <article class="post htlfndr-room-post">
                     <header>
-                        <h1 class="htlfndr-entry-title"> Double room</h1><a href="hotel-page-v1.html"><span>/ Hilton Hotel</span></a>
+                        <h1 class="htlfndr-entry-title"> Double room</h1><a href="hotel-page-v1.html"><span>/${newBookingInProcess.hotel.name}</span></a>
                     </header>
                     <!-- Article slider -->
                     <div id="htlfndr-room-slider" class="owl-carousel">

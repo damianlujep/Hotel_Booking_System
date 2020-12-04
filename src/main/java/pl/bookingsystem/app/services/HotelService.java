@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
+import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.entity.Hotel;
+import pl.bookingsystem.app.entity.RoomType;
 import pl.bookingsystem.app.repository.CalendarAvailabilityRepository;
 import pl.bookingsystem.app.repository.CalendarRateRepository;
 import pl.bookingsystem.app.repository.HotelRepository;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,11 +64,11 @@ public class HotelService implements IHotelService {
                 case "Hotel Kraków":
                     bookingHotelPages.put(hotel, "hotel-krakow-booking-page");
                     break;
-                case "Hotel Warszawa":
-                    bookingHotelPages.put(hotel, "hotel-warszawa-booking-page");
+                case "Hotel Łódź":
+                    bookingHotelPages.put(hotel, "hotel-lodz-booking-page");
                     break;
-                case "Hotel Wrocław":
-                    bookingHotelPages.put(hotel, "hotel-wroclaw-booking-page");
+                case "Hotel Barcelona":
+                    bookingHotelPages.put(hotel, "hotel-barcelona-booking-page");
                     break;
             }
         }
@@ -74,8 +77,36 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public BigDecimal findLowestHotelRate(int hotelID) {
+    public BigDecimal findLowestHotelRate(int hotelID, LocalDate arrivalDate) {
         Hotel currentHotel = hotelRepository.getOne(hotelID);
-        return calendarRateRepository.lowestHotelRate(currentHotel);
+        return calendarRateRepository.lowestHotelRate(currentHotel, arrivalDate);
+    }
+
+    @Override
+    public List<RoomType> findAllRoomTypesAvailableByDate(ReservationDto reservationDto) {
+        return calendarAvailabilityRepository.findAllRoomTypesAvailableByDate(reservationDto.getHotel(), reservationDto.getArrivalDate(), reservationDto.getDepartureDate());
+    }
+
+    @Override
+    public String findRoomTypeAndRateSelectedPage(int roomTypeId, int ratePlanId) {
+        if (roomTypeId == 1 && ratePlanId == 1)
+            return "double-room-standard";
+        else if (roomTypeId == 1 && ratePlanId == 2)
+            return "double-room-non-refundable";
+        else if (roomTypeId == 2 && ratePlanId == 1)
+            return "twin-room-standard";
+        else if (roomTypeId == 2 && ratePlanId == 2)
+            return "twin-room-non-refundable";
+        else if (roomTypeId == 1 && ratePlanId == 3)
+            return "double-room-members";
+        else if (roomTypeId == 1 && ratePlanId == 4)
+            return "double-room-members-non-refundable";
+        else if (roomTypeId == 2 && ratePlanId == 3)
+            return "twin-room-members";
+        else if (roomTypeId == 2 && ratePlanId == 4)
+            return "twin-room-members-non-refundable";
+
+        return null;
+
     }
 }

@@ -506,7 +506,7 @@
                         <span class="htlfndr-per-night">/ night</span></div>
                     <!-- .htlfndr-Spagere-price -->
                 </div><!-- .htlfndr-widget-main-content -->
-                <a href="<c:url value="/booking/roomsAvailable/1"/>" class="htlfndr-book-now-button" role="button">Rooms available</a>
+                <a href="<c:url value="/booking/roomsAvailable"/>" class="htlfndr-book-now-button" role="button">Rooms available</a>
                 <div class="htlfndr-widget-padding">
                     <div class="htlfndr-hotel-contacts">
                         <p class="htlfndr-mail"><a href="mailto:example@mail.com" >example@mail.com</a></p>
