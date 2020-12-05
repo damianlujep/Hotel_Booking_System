@@ -27,9 +27,11 @@ public class HotelService implements IHotelService {
     private final CalendarRateHistoryRepository calendarRateHistoryRepository;
     private final RoomTypeStructureRepository roomTypeStructureRepository;
     private final RatePlanStructureRepository ratePlanStructureRepository;
+    private final RatePlanStructureHistoryRepository ratePlanStructureHistoryRepository;
+    private final RoomTypeStructureHistoryRepository roomTypeStructureHistoryRepository;
 
     @Autowired
-    public HotelService(HotelRepository hotelRepository, RatePlanRepository ratePlanRepository, RoomTypeRepository roomTypeRepository, CalendarRateRepository calendarRateRepository, CalendarAvailabilityRepository calendarAvailabilityRepository, CalendarRateHistoryRepository calendarRateHistoryRepository, RoomTypeStructureRepository roomTypeStructureRepository, RatePlanStructureRepository ratePlanStructureRepository) {
+    public HotelService(HotelRepository hotelRepository, RatePlanRepository ratePlanRepository, RoomTypeRepository roomTypeRepository, CalendarRateRepository calendarRateRepository, CalendarAvailabilityRepository calendarAvailabilityRepository, CalendarRateHistoryRepository calendarRateHistoryRepository, RoomTypeStructureRepository roomTypeStructureRepository, RatePlanStructureRepository ratePlanStructureRepository, RatePlanStructureHistoryRepository ratePlanStructureHistoryRepository, RoomTypeStructureHistoryRepository roomTypeStructureHistoryRepository) {
         this.hotelRepository = hotelRepository;
         this.ratePlanRepository = ratePlanRepository;
         this.roomTypeRepository = roomTypeRepository;
@@ -38,6 +40,8 @@ public class HotelService implements IHotelService {
         this.calendarRateHistoryRepository = calendarRateHistoryRepository;
         this.roomTypeStructureRepository = roomTypeStructureRepository;
         this.ratePlanStructureRepository = ratePlanStructureRepository;
+        this.ratePlanStructureHistoryRepository = ratePlanStructureHistoryRepository;
+        this.roomTypeStructureHistoryRepository = roomTypeStructureHistoryRepository;
     }
 
     @Override
@@ -131,28 +135,28 @@ public class HotelService implements IHotelService {
         RatePlan promotionMember = ratePlanRepository.findByName("Promotion Member");
 
         //Double Room Standard Price
-        List<RoomAndRatePriceDto> doubleStandard = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, standard);
+        List<RoomAndRatePriceDto> doubleStandard = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, standard);
 
         //Twin Room Standard Price
-        List<RoomAndRatePriceDto> twinStandard = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, standard);
+        List<RoomAndRatePriceDto> twinStandard = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, standard);
 
         //Double Room Standard Price
-        List<RoomAndRatePriceDto> doublePromotion = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, promotion);
+        List<RoomAndRatePriceDto> doublePromotion = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, promotion);
 
         //Twin Room Standard Price
-        List<RoomAndRatePriceDto> twinPromotion = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, promotion);
+        List<RoomAndRatePriceDto> twinPromotion = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, promotion);
 
         //Double Room Members Standard Price
-        List<RoomAndRatePriceDto> doubleMembersStandard = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, standardMember);
+        List<RoomAndRatePriceDto> doubleMembersStandard = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, standardMember);
 
         //Twin Room Standard Price
-        List<RoomAndRatePriceDto> twinMembersStandard = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, standardMember);
+        List<RoomAndRatePriceDto> twinMembersStandard = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, standardMember);
 
         //Double Room Members Standard Price
-        List<RoomAndRatePriceDto> doubleMembersPromotional = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, promotionMember);
+        List<RoomAndRatePriceDto> doubleMembersPromotional = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, doubleRoom, promotionMember);
 
         //Twin Room Standard Price
-        List<RoomAndRatePriceDto> twinMembersPromotional = roomAndRetePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, promotionMember);
+        List<RoomAndRatePriceDto> twinMembersPromotional = roomAndRatePricesByRoomTypeAndRatePlan(reservationDto, twinRoom, promotionMember);
 
         listMap.put("DOUBLE_STANDARD", doubleStandard);
         listMap.put("TWIN_STANDARD", twinStandard);
@@ -197,12 +201,12 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public List<RoomAndRatePriceDto> roomAndRetePricesByRoomTypeAndRatePlan(ReservationDto reservationDto, RoomType roomType, RatePlan ratePlan) {
+    public List<RoomAndRatePriceDto> roomAndRatePricesByRoomTypeAndRatePlan(ReservationDto reservationDto, RoomType roomType, RatePlan ratePlan) {
         RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), roomType);
         RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), ratePlan);
 
-        List<String> doubleStandard = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), reservationDto.getDepartureDate(), reservationDto.getHotel());
-        return roomAndRatesPricesConverter(doubleStandard);
+        List<String> currentRatesAndPrices = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), reservationDto.getDepartureDate(), reservationDto.getHotel());
+        return roomAndRatesPricesConverter(currentRatesAndPrices);
     }
 
     @Override
@@ -225,6 +229,35 @@ public class HotelService implements IHotelService {
         }
 
         return averagePricePerRoomPerRate;
+    }
+
+    @Override
+    public RatePlanStructureHistory mostActualRatePlanStructure(ReservationDto reservationDto, int ratePlan) {
+        RatePlan selectedRatePlan = ratePlanRepository.getOne(ratePlan);
+        RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), selectedRatePlan);
+        return ratePlanStructureHistoryRepository.findMostActualRatePlanStructureHistory(rapStructure);
+    }
+
+    @Override
+    public RoomTypeStructureHistory mostActualRoomTypeStructure(ReservationDto reservationDto, int roomType) {
+        RoomType selectedRoomType = roomTypeRepository.getOne(roomType);
+        RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), selectedRoomType);
+        return roomTypeStructureHistoryRepository.findMostActualRoomPlanStructureHistory(rotStructure);
+    }
+
+    @Override
+    public Map<String, List<RoomAndRatePriceDto>> getFinalRoomAndRatePriceList(ReservationDto reservationDto, String roomAndRateKey) {
+        Map<String, List<RoomAndRatePriceDto>> listMap = roomAndRatesPricesMapped(reservationDto);
+
+        Map<String, List<RoomAndRatePriceDto>> finalMap = new HashMap<>();
+
+        for (Map.Entry<String, List<RoomAndRatePriceDto>> entry : listMap.entrySet()){
+            if (entry.getKey().equals(roomAndRateKey)){
+                finalMap.put(entry.getKey(), entry.getValue());
+            }
+        }
+
+        return finalMap;
     }
 
 

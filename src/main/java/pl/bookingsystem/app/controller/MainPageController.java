@@ -18,7 +18,6 @@ public class MainPageController {
 
     public MainPageController(IHotelService hotelService) {
         this.hotelService = hotelService;
-
     }
 
     @GetMapping("/")

@@ -40,6 +40,11 @@ public class MemberService implements IMemberService{
 
         return memberRepository.save(member);    }
 
+    @Override
+    public Member findMemberMyEmail(String email) {
+        return memberRepository.findByEmail(email);
+    }
+
     private boolean emailExists(String email){
         return memberRepository.findByEmail(email) != null;
     }

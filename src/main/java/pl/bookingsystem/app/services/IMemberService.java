@@ -6,4 +6,5 @@ import pl.bookingsystem.app.error.UserAlreadyExistException;
 
 public interface IMemberService {
     Member registerNewMember(MemberDto memberDto) throws UserAlreadyExistException;
+    Member findMemberMyEmail(String email);
 }

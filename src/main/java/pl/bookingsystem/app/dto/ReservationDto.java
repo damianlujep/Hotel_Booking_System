@@ -9,6 +9,7 @@ import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -19,8 +20,10 @@ public class ReservationDto {
     private LocalDate arrivalDate;
     private LocalDate departureDate;
     private int guestsQuantity;
-    private List<RoomAndRatePriceDto> roomAndRatePriceList;
-    private RatePlanStructureHistory mostActualRatePlan;
-    private RoomTypeStructureHistory mostActualRoomType;
+    private Map<String, List<RoomAndRatePriceDto>> roomAndRatePriceList;
+    private RatePlanStructureHistory mostActualRatePlanStructureHistory;
+    private RoomTypeStructureHistory mostActualRoomTypeStructureHistory;
+    private String selectedRateAndRoomKey;
+
 
 }

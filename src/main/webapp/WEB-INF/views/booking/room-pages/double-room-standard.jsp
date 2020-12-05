@@ -120,6 +120,7 @@
 
                 <%--  Form to PayAndConfirm Booking form--%>
                 <form:form action="/booking/payment" method="post">
+                    <input name="roomAndRateKey" id="roomAndRateKey" value="DOUBLE_STANDARD" type="hidden">
                     <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
                 </form:form>
                 <%--END -  Form to PayAndConfirm Booking form--%>

@@ -122,6 +122,7 @@
 
             <%--  Form to PayAndConfirm Booking form--%>
             <form:form action="/members/booking/payment" method="post">
+                <input name="roomAndRateKey" id="roomAndRateKey" value="TWIN_MEMBERS_STANDARD" type="hidden">
                 <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
             </form:form>
             <%--END -  Form to PayAndConfirm Booking form--%>
