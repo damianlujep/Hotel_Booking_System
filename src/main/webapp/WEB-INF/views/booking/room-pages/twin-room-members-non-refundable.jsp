@@ -114,6 +114,9 @@
                                 <span class="htlfndr-cost" style="font-size: 40px">${averagePrice.value} zł</span>
                             </c:if>
                         </c:forEach><br/>
+                        <div>
+                            <span style="padding-top: 10px">price</span> <span>  for 1 night</span>
+                        </div>
                     </div> <!-- .htlfndr-hotel-price -->
                 </div><!-- .htlfndr-widget-main-content -->
             </div><!-- .widget .htlfndr-hotel-visit-card -->

@@ -3,7 +3,6 @@ package pl.bookingsystem.app.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import pl.bookingsystem.app.entity.CalendarRateHistory;
 import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.entity.RatePlanStructureHistory;
 import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
@@ -20,7 +19,7 @@ public class ReservationDto {
     private LocalDate arrivalDate;
     private LocalDate departureDate;
     private int guestsQuantity;
-    private List<CalendarRateHistory> mostActualCalendarRates;
+    private List<RoomAndRatePriceDto> roomAndRatePriceList;
     private RatePlanStructureHistory mostActualRatePlan;
     private RoomTypeStructureHistory mostActualRoomType;
 
