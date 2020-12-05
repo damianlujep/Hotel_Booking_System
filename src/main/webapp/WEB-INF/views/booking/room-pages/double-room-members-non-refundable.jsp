@@ -32,9 +32,10 @@
         <main id="htlfndr-main-content" class="col-sm-12 col-md-8 col-lg-9 htlfndr-hotel-single-content" role="main">
             <article class="post htlfndr-room-post">
                 <header>
-                    <h1 class="htlfndr-entry-title">Twin room </h1><a
+                    <h1 class="htlfndr-entry-title">Double room </h1><a
                         href="hotel-page-v1.html"><span>/${newBookingInProcess.hotel.name}</span></a><br/>
                     <div class="alert alert-danger" style="font-weight: bold"> <i class="fa fa-info"></i>10% of discount just for members </div>
+                    <div class="alert alert-danger" style="font-weight: bold"> <i class="fa fa-info"></i>This is a Non-refundable offer</div>
                 </header>
                 <!-- Article slider -->
                 <div id="htlfndr-room-slider" class="owl-carousel">
@@ -124,7 +125,7 @@
                 <div id="htlfndr-accordion-1" class="htlfndr-widget-main-content htlfndr-widget-padding">
                     <h2 class="widget-title htlfndr-accordion-title">room details</h2>
                     <div class="htlfndr-accordion-inner">
-                        <p class="htlfndr-details"><span>beds:</span> <span>2 twin beds</span></p>
+                        <p class="htlfndr-details"><span>beds:</span> <span>1 double bed</span></p>
                         <p class="htlfndr-details"><span>floor area:</span> <span>19 m<sup>2</sup></span></p>
                         <p class="htlfndr-details"><span>max guests:</span> <span>7</span></p>
                         <p class="htlfndr-details"><span>max kids:</span> <span>3</span></p>

@@ -35,6 +35,7 @@
                     <h1 class="htlfndr-entry-title">Twin room </h1><a
                         href="hotel-page-v1.html"><span>/${newBookingInProcess.hotel.name}</span></a><br/>
                     <div class="alert alert-danger" style="font-weight: bold"> <i class="fa fa-info"></i>10% of discount just for members </div>
+                    <div class="alert alert-danger" style="font-weight: bold"> <i class="fa fa-info"></i>This is a Non-refundable offer</div>
                 </header>
                 <!-- Article slider -->
                 <div id="htlfndr-room-slider" class="owl-carousel">

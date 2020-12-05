@@ -6,6 +6,7 @@ import lombok.ToString;
 import pl.bookingsystem.app.entity.CalendarRateHistory;
 import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.entity.RatePlanStructureHistory;
+import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +20,8 @@ public class ReservationDto {
     private LocalDate arrivalDate;
     private LocalDate departureDate;
     private int guestsQuantity;
-    private RatePlanStructureHistory ratePlanStructureHistory;
-    private List<CalendarRateHistory> lastUpdatedCalendarRates;
+    private List<CalendarRateHistory> mostActualCalendarRates;
+    private RatePlanStructureHistory mostActualRatePlan;
+    private RoomTypeStructureHistory mostActualRoomType;
 
 }

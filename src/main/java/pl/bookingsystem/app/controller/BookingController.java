@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.entity.Hotel;
+import pl.bookingsystem.app.entity.RoomType;
 import pl.bookingsystem.app.services.IHotelService;
 
 import javax.servlet.http.HttpSession;
@@ -51,24 +52,49 @@ public class BookingController {
     @GetMapping("/hotel/{hotelId}")
     public ModelAndView displayHotelSelectedPage(@PathVariable int hotelId, HttpSession session){
         String hotelPagePath = hotelService.findHotelSelectedPage(hotelId);
-        BigDecimal lowestHotelRate = hotelService.findLowestHotelRate(hotelId);
 
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        BigDecimal lowestHotelRate = hotelService.findLowestHotelRate(hotelId, newBooking.getArrivalDate());
+
         newBooking.setHotel(hotelService.findHotelById(hotelId));
         session.setAttribute("newBookingInProcess", newBooking);
 
         return new ModelAndView("/booking/hotel-pages/" + hotelPagePath, "lowestHotelRate",lowestHotelRate.setScale(2, RoundingMode.HALF_UP));
     }
 
-    @GetMapping("/roomsAvailable/{hotelId}")
-    public ModelAndView searchAndShowRoomsAvailable(@PathVariable int hotelId){
-        return new ModelAndView("booking/rooms-available-results");
+    @GetMapping("/roomsAvailable")
+    public ModelAndView searchAndShowRoomsAvailable(HttpSession session){
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        List<RoomType> allRoomTypesAvailableByDate = hotelService.findAllRoomTypesAvailableByDate(newBooking);
+        HotelSearchingDto searchingDto = new HotelSearchingDto();
+        searchingDto.setCity(newBooking.getCity());
 
+        ModelAndView searchResults = new ModelAndView("booking/rooms-available-results", "roomsAvailableList", allRoomTypesAvailableByDate );
+        searchResults.addObject("roomsSearching", searchingDto);
+        return searchResults;
+
+    }
+
+    @PostMapping("/updateArrivalAndDepartureDates")
+    public ModelAndView updateArrivalAndDepartureDates(@ModelAttribute("roomsSearching") @Valid HotelSearchingDto hotelSearchingDto, BindingResult result, HttpSession session){
+        if (result.hasErrors()){
+            return new ModelAndView("redirect:roomsAvailable", "roomsSearching", hotelSearchingDto);
+        }
+
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        newBooking.setArrivalDate(hotelSearchingDto.getArrivalDate());
+        newBooking.setDepartureDate(hotelSearchingDto.getDepartureDate());
+        newBooking.setGuestsQuantity(hotelSearchingDto.getGuestsQuantity());
+
+        session.setAttribute("newBookingInProcess", newBooking);
+
+        return new ModelAndView("redirect:roomsAvailable");
     }
 
     @GetMapping("/roomAndRate/{roomTypeId}/{ratePlanId}")
     public ModelAndView displayRoomAndRateTypePage(@PathVariable int roomTypeId, @PathVariable int ratePlanId){
-        return new ModelAndView("booking/room-pages/double-room-members");
+        String roomTypeAndRateSelectedPage = hotelService.findRoomTypeAndRateSelectedPage(roomTypeId, ratePlanId);
+        return new ModelAndView("booking/room-pages/" + roomTypeAndRateSelectedPage);
 
     }
 

@@ -33,7 +33,7 @@
             <article class="post htlfndr-room-post">
                 <header>
                     <h1 class="htlfndr-entry-title">Double room </h1><a
-                        href="hotel-page-v1.html"><span>/ Hilton Hotel</span></a><br/>
+                        href="hotel-page-v1.html"><span>/${newBookingInProcess.hotel.name}</span></a><br/>
                     <div class="alert alert-danger" style="font-weight: bold"> <i class="fa fa-info"></i>10% of discount just for members </div>
                 </header>
                 <!-- Article slider -->
