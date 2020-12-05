@@ -105,15 +105,12 @@ public class BookingController {
 
     }
 
-    @GetMapping("/payment")
+    //Payment for members is on MembersController
+    @PostMapping("/payment")
     public String paymentFormNonMembers(){
         return "/booking/payment-form";
     }
 
-    @GetMapping("/members/payment")
-    public String paymentFormMembers(){
-        return "/booking/payment-form";
-    }
 
     @ModelAttribute ("allCitiesList")
     public List<String> allCitiesList(){

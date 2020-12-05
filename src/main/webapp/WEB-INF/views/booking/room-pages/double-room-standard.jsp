@@ -117,9 +117,12 @@
                         </div> <!-- .htlfndr-hotel-price -->
                     </div><!-- .htlfndr-widget-main-content -->
                 </div><!-- .widget .htlfndr-hotel-visit-card -->
-                <form action="payment.html" method="post">
+
+                <%--  Form to PayAndConfirm Booking form--%>
+                <form:form action="/booking/payment" method="post">
                     <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
-                </form>
+                </form:form>
+                <%--END -  Form to PayAndConfirm Booking form--%>
 
                 <div>
                     <button type="button" class="btn btn-primary btn-lg btn btn-danger" onclick="history.back()" style="width: 100%; margin-bottom: 15%; height: 50px ">back</button>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%--Head, header and Navigation Content for website--%>
@@ -14,7 +15,7 @@
                 <li>
                     <span class="htlfndr-step-number">1</span> <span class="htlfndr-step-description">results</span></a>
                 </li>
-                <li><a href="javascript: window.history.go(-2)">
+                <li><a href="javascript: window.history.go(-3)">
                     <span class="htlfndr-step-number">2</span> <span class="htlfndr-step-description">Hotel</span></a>
                 </li>
                 <li><a href="javascript: window.history.go(-1)">
@@ -32,7 +33,10 @@
                     <section class="htlfndr-form-section">
                         <header>
                             <h2 class="htlfndr-form-section-title">Your personal <span>information</span></h2>
-                            <h5 class="htlfndr-form-section-description"><a href="#" data-toggle="modal" data-target="#htlfndr-sing-in"><span class="htlfndr-sing-in-link">Sing in</span></a> for fast booking or enter your personal information</h5>
+                            <c:if test="${currentAdminLogged == null}">
+                            <h5 class="htlfndr-form-section-description"><a href="#" data-toggle="modal" data-target="#htlfndr-sing-in">
+                                <span class="htlfndr-sing-in-link">Sing in</span></a> for fast booking or enter your personal information</h5>
+                            </c:if>
                         </header>
                         <hr />
                         <div class="htlfndr-form-block">
