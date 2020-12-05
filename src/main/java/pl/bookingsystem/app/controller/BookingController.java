@@ -9,7 +9,9 @@ import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.Hotel;
+import pl.bookingsystem.app.entity.RatePlanStructureHistory;
 import pl.bookingsystem.app.entity.RoomType;
+import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
 import pl.bookingsystem.app.services.IHotelService;
 
 import javax.servlet.http.HttpSession;
@@ -99,11 +101,36 @@ public class BookingController {
     }
 
     @GetMapping("/roomAndRate/{roomTypeId}/{ratePlanId}")
-    public ModelAndView displayRoomAndRateTypePage(@PathVariable int roomTypeId, @PathVariable int ratePlanId){
+    public ModelAndView displayRoomAndRateTypePage(@PathVariable int roomTypeId, @PathVariable int ratePlanId, HttpSession session){
         String roomTypeAndRateSelectedPage = hotelService.findRoomTypeAndRateSelectedPage(roomTypeId, ratePlanId);
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+
+        RoomTypeStructureHistory roomTypeStructureHistory = hotelService.mostActualRoomTypeStructure(newBooking, roomTypeId);
+        RatePlanStructureHistory ratePlanStructureHistory = hotelService.mostActualRatePlanStructure(newBooking, ratePlanId);
+
+        newBooking.setMostActualRoomTypeStructureHistory(roomTypeStructureHistory);
+        newBooking.setMostActualRatePlanStructureHistory(ratePlanStructureHistory);
+
+        session.setAttribute("newBookingInProcess", newBooking);
+
         return new ModelAndView("booking/room-pages/" + roomTypeAndRateSelectedPage);
 
     }
+
+    //Payment for members is on MembersController
+    @PostMapping("/payment")
+    public String paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
+
+        Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
+        newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
+        
+        session.setAttribute("newBookingInProcess", newBooking);
+
+        return "/booking/payment-form";
+    }
+
 
     @ModelAttribute ("allCitiesList")
     public List<String> allCitiesList(){

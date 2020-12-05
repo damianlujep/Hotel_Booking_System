@@ -113,12 +113,19 @@
                                 <span class="htlfndr-cost" style="font-size: 40px">${averagePrice.value} zł</span>
                             </c:if>
                         </c:forEach><br/>
+                        <div>
+                            <span style="padding-top: 10px">price</span> <span>  for 1 night</span>
+                        </div>
                     </div> <!-- .htlfndr-hotel-price -->
                 </div><!-- .htlfndr-widget-main-content -->
             </div><!-- .widget .htlfndr-hotel-visit-card -->
-            <form action="payment.html" method="post">
+
+            <%--  Form to PayAndConfirm Booking form--%>
+            <form:form action="/booking/payment" method="post">
+                <input name="roomAndRateKey" id="roomAndRateKey" value="TWIN_PROMOTIONAL" type="hidden">
                 <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
-            </form>
+            </form:form>
+            <%--END -  Form to PayAndConfirm Booking form--%>
 
             <div>
                 <button type="button" class="btn btn-primary btn-lg btn btn-danger" onclick="history.back()" style="width: 100%; margin-bottom: 15%; height: 50px ">back</button>

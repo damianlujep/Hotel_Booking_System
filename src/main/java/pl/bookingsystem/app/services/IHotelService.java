@@ -3,9 +3,7 @@ package pl.bookingsystem.app.services;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
-import pl.bookingsystem.app.entity.Hotel;
-import pl.bookingsystem.app.entity.RatePlan;
-import pl.bookingsystem.app.entity.RoomType;
+import pl.bookingsystem.app.entity.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -22,6 +20,9 @@ public interface IHotelService {
     String findRoomTypeAndRateSelectedPage(int roomTypeId, int ratePlanId);
     Map<String, List<RoomAndRatePriceDto>> roomAndRatesPricesMapped(ReservationDto reservationDto);
     List<RoomAndRatePriceDto> roomAndRatesPricesConverter(List<String> roomAndRatePricesObjects);
-    List<RoomAndRatePriceDto> roomAndRetePricesByRoomTypeAndRatePlan (ReservationDto reservationDto, RoomType roomType, RatePlan ratePlan);
+    List<RoomAndRatePriceDto> roomAndRatePricesByRoomTypeAndRatePlan(ReservationDto reservationDto, RoomType roomType, RatePlan ratePlan);
     Map<String, BigDecimal> averagePricesPerRoomPerRate( Map<String, List<RoomAndRatePriceDto>> roomAndRatesPricesMapped);
+    RatePlanStructureHistory mostActualRatePlanStructure(ReservationDto reservationDto, int ratePlanId);
+    RoomTypeStructureHistory mostActualRoomTypeStructure(ReservationDto reservationDto, int roomType);
+    Map<String, List<RoomAndRatePriceDto>> getFinalRoomAndRatePriceList(ReservationDto reservationDto, String roomAndRateKey);
 }

@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.channel.ChannelProcessingFilter;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import pl.bookingsystem.app.services.MyMemberDetailsService;
@@ -33,6 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new MyCustomLoginSuccessHandler("/yourdefaultsuccessurl");
+    }
+
     @Autowired
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //Configuration to read credentials from DB
@@ -51,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                         .antMatchers("/", "/booking/**", "/login", "/searchingHandler", "/registration", "/test").permitAll() //allow public access
-                        .antMatchers("/members/**").access("hasRole('ROLE_MEMBER')") //strony, które potrzebują user, admin
+                        .antMatchers("/members/**", "/members/booking/**").access("hasRole('ROLE_MEMBER')") //strony, które potrzebują user, admin
                         .antMatchers("/resources/**").permitAll()
                         .antMatchers("/css/**", "/js/**", "/images/**","/fonts/**").permitAll()
                         .anyRequest().authenticated()
@@ -59,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                         .loginPage("/login")
                         .loginProcessingUrl("/authenticateMember")
-                        .defaultSuccessUrl("/");
-                //tutaj można dodać log-out
+                .successHandler(successHandler());
+        //tutaj można dodać log-out
     }
 }
