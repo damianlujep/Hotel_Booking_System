@@ -73,6 +73,7 @@ public class BookingController {
 
         Map<String, List<RoomAndRatePriceDto>> ratesPricesMapped = hotelService.roomAndRatesPricesMapped(newBooking);
         Map<String, BigDecimal> averagePrices = hotelService.averagePricesPerRoomPerRate(ratesPricesMapped);
+        session.setAttribute("averagePrices", averagePrices);
 
         ModelAndView searchResults = new ModelAndView("booking/rooms-available-results", "roomsAvailableList", allRoomTypesAvailableByDate );
         searchResults.addObject("roomsSearching", searchingDto);
