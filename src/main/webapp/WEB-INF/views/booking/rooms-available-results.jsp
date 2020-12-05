@@ -83,7 +83,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('TWIN_STANDARD')}">
+                                        <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -112,7 +116,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/1"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 100</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('DOUBLE_STANDARD')}">
+                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -143,7 +151,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/2"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('TWIN_PROMOTIONAL')}">
+                                        <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -174,7 +186,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/2"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('DOUBLE_PROMOTIONAL')}">
+                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -214,7 +230,11 @@
                                                 </div><!-- .htlfndr-description-content -->
                                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/3"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                                 <div class="htlfndr-hotel-price">
-                                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                                        <c:if test="${averagePrice.key.equals('TWIN_MEMBERS_STANDARD')}">
+                                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                                        </c:if>
+                                                    </c:forEach>
                                                 </div><!-- .htlfndr-Spagere-price -->
                                             </div><!-- .htlfndr-Spagere-description -->
                                         </div><!-- .htlfndr-Spagere-post -->
@@ -243,7 +263,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/3"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('DOUBLE_MEMBERS_STANDARD')}">
+                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -274,7 +298,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/4"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('TWIN_MEMBERS_PROMOTIONAL')}">
+                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->
@@ -305,7 +333,11 @@
                                 </div><!-- .htlfndr-description-content -->
                                 <a href="<c:url value="/booking/roomAndRate/${roomType.id}/4"/>" role="button" class="htlfndr-select-hotel-button">select</a>
                                 <div class="htlfndr-hotel-price">
-                                    <span class="htlfndr-cost">$ 280</span> <span class="htlfndr-per-night">per night</span>
+                                    <c:forEach items="${averagePrices}" var="averagePrice">
+                                        <c:if test="${averagePrice.key.equals('DOUBLE_MEMBERS_PROMOTIONAL')}">
+                                            <span class="htlfndr-cost">${averagePrice.value} zł</span> <span class="htlfndr-per-night">per night</span>
+                                        </c:if>
+                                    </c:forEach>
                                 </div><!-- .htlfndr-Spagere-price -->
                             </div><!-- .htlfndr-Spagere-description -->
                         </div><!-- .htlfndr-Spagere-post -->

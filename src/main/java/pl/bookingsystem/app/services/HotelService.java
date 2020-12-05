@@ -114,7 +114,7 @@ public class HotelService implements IHotelService {
         else if (roomTypeId == 2 && ratePlanId == 4)
             return "twin-room-members-non-refundable";
 
-        return null;
+        return "error";
 
     }
 
@@ -203,6 +203,28 @@ public class HotelService implements IHotelService {
 
         List<String> doubleStandard = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), reservationDto.getDepartureDate(), reservationDto.getHotel());
         return roomAndRatesPricesConverter(doubleStandard);
+    }
+
+    @Override
+    public Map<String, BigDecimal> averagePricesPerRoomPerRate(Map<String, List<RoomAndRatePriceDto>> roomAndRatesPricesMapped) {
+        Map<String, BigDecimal> averagePricePerRoomPerRate = new HashMap<>();
+
+        for (Map.Entry<String, List<RoomAndRatePriceDto>> entry : roomAndRatesPricesMapped.entrySet()){
+            List<RoomAndRatePriceDto> value = entry.getValue();
+
+            BigDecimal[] bigDecimals = value.stream()
+                    .map(RoomAndRatePriceDto::getPrice)
+                    .filter(Objects::nonNull)
+                    .map(bd -> new BigDecimal[]{bd, BigDecimal.ONE})
+                    .reduce((a, b) -> new BigDecimal[]{a[0].add(b[0]), a[1].add(BigDecimal.ONE)})
+                    .get();
+
+            BigDecimal averagePrice = bigDecimals[0].divide(bigDecimals[1], 2, RoundingMode.HALF_UP);
+
+            averagePricePerRoomPerRate.put( entry.getKey(), averagePrice);
+        }
+
+        return averagePricePerRoomPerRate;
     }
 
 
