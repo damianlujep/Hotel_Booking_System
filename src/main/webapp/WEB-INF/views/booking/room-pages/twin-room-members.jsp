@@ -108,8 +108,11 @@
                         <img src="http://placehold.it/105x75" alt="Hotel logo" />
                     </div><!-- .htlfndr-hotel-logo -->
                     <div class="htlfndr-hotel-price">
-                        <span>price</span> <span>  for 1 night</span>
-                        <span class="htlfndr-cost">$ 100</span>
+                        <c:forEach items="${averagePrices}" var="averagePrice">
+                            <c:if test="${averagePrice.key.equals('TWIN_MEMBERS_STANDARD')}">
+                                <span class="htlfndr-cost" style="font-size: 40px">${averagePrice.value} zł</span>
+                            </c:if>
+                        </c:forEach><br/>
                     </div> <!-- .htlfndr-hotel-price -->
                 </div><!-- .htlfndr-widget-main-content -->
             </div><!-- .widget .htlfndr-hotel-visit-card -->

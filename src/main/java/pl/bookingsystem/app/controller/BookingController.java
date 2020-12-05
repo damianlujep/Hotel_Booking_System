@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
+import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.Hotel;
 import pl.bookingsystem.app.entity.RoomType;
 import pl.bookingsystem.app.services.IHotelService;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/booking")
@@ -69,8 +71,13 @@ public class BookingController {
         HotelSearchingDto searchingDto = new HotelSearchingDto();
         searchingDto.setCity(newBooking.getCity());
 
+        Map<String, List<RoomAndRatePriceDto>> ratesPricesMapped = hotelService.roomAndRatesPricesMapped(newBooking);
+        Map<String, BigDecimal> averagePrices = hotelService.averagePricesPerRoomPerRate(ratesPricesMapped);
+        session.setAttribute("averagePrices", averagePrices);
+
         ModelAndView searchResults = new ModelAndView("booking/rooms-available-results", "roomsAvailableList", allRoomTypesAvailableByDate );
         searchResults.addObject("roomsSearching", searchingDto);
+        searchResults.addObject("averagePrices", averagePrices);
         return searchResults;
 
     }

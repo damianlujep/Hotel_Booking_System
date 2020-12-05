@@ -23,4 +23,5 @@ public interface IHotelService {
     Map<String, List<RoomAndRatePriceDto>> roomAndRatesPricesMapped(ReservationDto reservationDto);
     List<RoomAndRatePriceDto> roomAndRatesPricesConverter(List<String> roomAndRatePricesObjects);
     List<RoomAndRatePriceDto> roomAndRetePricesByRoomTypeAndRatePlan (ReservationDto reservationDto, RoomType roomType, RatePlan ratePlan);
+    Map<String, BigDecimal> averagePricesPerRoomPerRate( Map<String, List<RoomAndRatePriceDto>> roomAndRatesPricesMapped);
 }
