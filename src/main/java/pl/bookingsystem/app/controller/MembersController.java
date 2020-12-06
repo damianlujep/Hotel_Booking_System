@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import pl.bookingsystem.app.dto.PayAndConfirmBookingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.Member;
@@ -27,7 +29,7 @@ public class MembersController {
     }
 
     @PostMapping("/booking/payment")
-    public String paymentFormMembers(Authentication auth, HttpSession session, @RequestParam String roomAndRateKey){
+    public ModelAndView paymentFormMembers(Authentication auth, HttpSession session, @RequestParam String roomAndRateKey){
         String email = auth.getName();
         Member currentMember = memberService.findMemberMyEmail(email);
         session.setAttribute("currentAdminLogged", currentMember);
@@ -39,7 +41,7 @@ public class MembersController {
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
 
         session.setAttribute("newBookingInProcess", newBooking);
+        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
 
-        return "/booking/payment-form";
     }
 }

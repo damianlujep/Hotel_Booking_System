@@ -6,6 +6,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
+import pl.bookingsystem.app.dto.PayAndConfirmBookingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.Hotel;
@@ -119,7 +120,7 @@ public class BookingController {
 
     //Payment for members is on MembersController
     @PostMapping("/payment")
-    public String paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
 
@@ -128,7 +129,26 @@ public class BookingController {
         
         session.setAttribute("newBookingInProcess", newBooking);
 
-        return "/booking/payment-form";
+        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
+    }
+
+    @PostMapping("/confirmReservation")
+    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result){
+        if (result.hasErrors()){
+            return new ModelAndView("booking/payment-form", "payAndConfirmForm", payAndConfirmBookingDto);
+        }
+
+
+
+        return new ModelAndView("redirect:/bookingConfirmation");
+
+    }
+
+    @GetMapping("/bookingConfirmation")
+    public ModelAndView bookingFinalConfirmation(){
+
+        return new ModelAndView("booking/booking-confirmation");
+
     }
 
 

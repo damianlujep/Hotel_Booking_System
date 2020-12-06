@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @ToString
-@Primary
 public class RoomAndRatePriceDto {
     private LocalDate date;
     private Hotel hotelId;
