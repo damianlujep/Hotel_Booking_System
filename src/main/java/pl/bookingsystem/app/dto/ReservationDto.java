@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import pl.bookingsystem.app.entity.Hotel;
+import pl.bookingsystem.app.entity.Member;
 import pl.bookingsystem.app.entity.RatePlanStructureHistory;
 import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
 
@@ -24,6 +25,7 @@ public class ReservationDto {
     private RatePlanStructureHistory mostActualRatePlanStructureHistory;
     private RoomTypeStructureHistory mostActualRoomTypeStructureHistory;
     private String selectedRateAndRoomKey;
+    private Member member;
 
 
 }

@@ -129,26 +129,29 @@ public class BookingController {
         
         session.setAttribute("newBookingInProcess", newBooking);
 
+        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
+        session.setAttribute("totalPrice", bigDecimal);
+
         return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
     }
 
     @PostMapping("/confirmReservation")
-    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result){
+    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result, HttpSession session){
         if (result.hasErrors()){
             return new ModelAndView("booking/payment-form", "payAndConfirmForm", payAndConfirmBookingDto);
         }
 
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        boolean b = hotelService.confirmReservation(newBooking);
 
 
-        return new ModelAndView("redirect:/bookingConfirmation");
+        return new ModelAndView("redirect:bookingConfirmation");
 
     }
 
     @GetMapping("/bookingConfirmation")
     public ModelAndView bookingFinalConfirmation(){
-
         return new ModelAndView("booking/booking-confirmation");
-
     }
 
 

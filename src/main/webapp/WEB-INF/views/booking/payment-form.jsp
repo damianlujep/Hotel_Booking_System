@@ -30,7 +30,7 @@
 
         <div class="row htlfndr-payment-page">
             <main id="htlfndr-main-content" class="col-sm-12 col-md-8 col-lg-8" role="main">
-                <form:form action="/confirmReservation" id="htlfndr-payment-form" method="POST" modelAttribute="payAndConfirmForm">
+                <form:form action="/booking/confirmReservation" id="htlfndr-payment-form" method="POST" modelAttribute="payAndConfirmForm">
                     <section class="htlfndr-form-section">
                         <header>
                             <h2 class="htlfndr-form-section-title">Your personal <span>information</span></h2>
@@ -258,13 +258,14 @@
                                 <p class="htlfndr-details"><span>check-out:</span> <span>${newBookingInProcess.departureDate}</span></p>
                                 <p class="htlfndr-details"><span>persons:</span> <span>${newBookingInProcess.guestsQuantity}</span></p>
                             </div><!-- .htlfndr-widget-block -->
-                            <div class="htlfndr-widget-block htlfndr-bigger-font">
-                                <p class="htlfndr-room-cost"><span>1 night price</span> <span>$100</span></p>
-                                <p class="htlfndr-room-cost"><span>taxes & fees</span> <span>$30</span></p>
-                            </div><!-- .htlfndr-widget-block -->
+<%--                            <div class="htlfndr-widget-block htlfndr-bigger-font">--%>
+<%--                                <p class="htlfndr-room-cost"><span>1 night price</span> <span>$100</span></p>--%>
+<%--                                <p class="htlfndr-room-cost"><span>taxes & fees</span> <span>$30</span></p>--%>
+<%--                            </div><!-- .htlfndr-widget-block -->--%>
                             <p class="htlfndr-total-price">total price:</p>
+                            <p></p>
                             <div class="htlfndr-hotel-price">
-                                <span class="htlfndr-cost">$ 130</span>
+                                <span class="htlfndr-cost">${totalPrice}</span>
                             </div><!-- .htlfndr-Spagere-price -->
                         </div><!-- .htlfndr-widget-main-content -->
                     </div><!-- .widget -->

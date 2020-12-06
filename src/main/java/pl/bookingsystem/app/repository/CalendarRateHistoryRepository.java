@@ -23,4 +23,17 @@ public interface CalendarRateHistoryRepository extends JpaRepository<CalendarRat
             "WHERE cr.date BETWEEN ?3 and ?4 AND h.id = ?5", nativeQuery = true)
     List<String> currentPricesByDateRoomTypeStructureAndRatePlanStructure(RoomTypeStructure origin_room_type_structure_id, RatePlanStructure origin_rate_plan_structure_id, LocalDate arrivalDate, LocalDate departureDate, Hotel hotelId);
 
+    @Query(value = "select t1.id " +
+            "from calendar_rates_history t1 " +
+            "         JOIN calendar_rates cr on cr.id = t1.origin_calendar_rates_id " +
+            "         join hotels as h on h.id = cr.hotel_id " +
+            "         JOIN\n" +
+            "     (SELECT origin_calendar_rates_id, max(calendar_rates_history.updated_on) as max_dt " +
+            "      FROM calendar_rates_history " +
+            "      group by origin_calendar_rates_id) t2 on t1.origin_calendar_rates_id = t2.origin_calendar_rates_id and t1.updated_on = t2.max_dt " +
+            "WHERE cr.date BETWEEN ?1 and ?2 AND h.id = ?3", nativeQuery = true)
+    List<Integer> calendarRateHistoryIds (LocalDate arrivalDate, LocalDate departureDate, Hotel hotelId);
+
+
+
 }

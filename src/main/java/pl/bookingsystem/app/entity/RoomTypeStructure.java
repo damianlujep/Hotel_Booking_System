@@ -25,9 +25,6 @@ public class RoomTypeStructure {
     @JoinColumn(name = "room_type_id")
     private RoomType roomTypeId;
 
-    @Column(name = "room_type_quantity")
-    private int roomTypeQuantity;
-
     @Column(name = "room_type_increment")
     private BigDecimal roomTypeIncrement;
 }
