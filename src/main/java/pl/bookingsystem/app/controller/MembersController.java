@@ -14,6 +14,7 @@ import pl.bookingsystem.app.services.IHotelService;
 import pl.bookingsystem.app.services.IMemberService;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,9 @@ public class MembersController {
 
         Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
+
+        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
+        session.setAttribute("totalPrice", bigDecimal);
 
         session.setAttribute("newBookingInProcess", newBooking);
         return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());

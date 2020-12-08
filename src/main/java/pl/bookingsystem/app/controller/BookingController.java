@@ -9,10 +9,7 @@ import pl.bookingsystem.app.dto.HotelSearchingDto;
 import pl.bookingsystem.app.dto.PayAndConfirmBookingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
-import pl.bookingsystem.app.entity.Hotel;
-import pl.bookingsystem.app.entity.RatePlanStructureHistory;
-import pl.bookingsystem.app.entity.RoomType;
-import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
+import pl.bookingsystem.app.entity.*;
 import pl.bookingsystem.app.services.IHotelService;
 
 import javax.servlet.http.HttpSession;
@@ -142,11 +139,15 @@ public class BookingController {
         }
 
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
-        boolean b = hotelService.confirmReservation(newBooking);
+        Member currentAdminLogged = (Member) session.getAttribute("currentAdminLogged");
 
+        if (currentAdminLogged != null){
+            newBooking.setMember(currentAdminLogged);
+        }
+
+        hotelService.confirmReservation(newBooking);
 
         return new ModelAndView("redirect:bookingConfirmation");
-
     }
 
     @GetMapping("/bookingConfirmation")

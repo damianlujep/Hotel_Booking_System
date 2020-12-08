@@ -188,14 +188,22 @@ public class HotelService implements IHotelService {
 
         for (List<String> s : pricesAndRates){
             RoomAndRatePriceDto conversion = new RoomAndRatePriceDto();
+
+            CalendarRateHistory currentId = calendarRateHistoryRepository.getOne(Integer.parseInt(s.get(0)));
+            conversion.setCalendarRateHistory(currentId);
+
+
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate parse = LocalDate.parse(s.get(0), formatter);
+            LocalDate parse = LocalDate.parse(s.get(1), formatter);
             conversion.setDate(parse);
-            Hotel currentHotel = hotelRepository.getOne(Integer.parseInt(s.get(1)));
+
+            Hotel currentHotel = hotelRepository.getOne(Integer.parseInt(s.get(2)));
             conversion.setHotelId(currentHotel);
-            BigDecimal price = BigDecimal.valueOf(Double.parseDouble(s.get(2)));
+
+            BigDecimal price = BigDecimal.valueOf(Double.parseDouble(s.get(3)));
             conversion.setPrice(price.setScale(2, RoundingMode.HALF_UP));
-            CalendarRate originCalendarRate = calendarRateRepository.getOne(Integer.parseInt(s.get(3)));
+
+            CalendarRate originCalendarRate = calendarRateRepository.getOne(Integer.parseInt(s.get(4)));
             conversion.setOriginCalendarRatesId(originCalendarRate);
 
             pricesAndRatesList.add(conversion);
@@ -209,7 +217,10 @@ public class HotelService implements IHotelService {
         RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), roomType);
         RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), ratePlan);
 
-        List<String> currentRatesAndPrices = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), reservationDto.getDepartureDate(), reservationDto.getHotel());
+        //Stay date correction, just night are count for billing
+        LocalDate departureDateCorrection = reservationDto.getDepartureDate().minusDays(1);
+
+        List<String> currentRatesAndPrices = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), departureDateCorrection, reservationDto.getHotel());
         return roomAndRatesPricesConverter(currentRatesAndPrices);
     }
 
@@ -265,7 +276,7 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public boolean confirmReservation(ReservationDto reservationDto) {
+    public void confirmReservation(ReservationDto reservationDto) {
         Reservation newBooking = new Reservation();
         BigDecimal totalRoomRevenue = calculateTotalRoomRevenue(reservationDto);
 
@@ -282,42 +293,20 @@ public class HotelService implements IHotelService {
         reservationRepository.save(newBooking);
 
 //        Reservation Confirmed
-        ReservationConfirmed newConfirmed = new ReservationConfirmed();
-
         Map<String, List<RoomAndRatePriceDto>> map = reservationDto.getRoomAndRatePriceList();
         List<RoomAndRatePriceDto> roomAndRatePriceDtos = map.get(reservationDto.getSelectedRateAndRoomKey());
 
-        newConfirmed.setReservationNo(reservationNo);
-        newConfirmed.setMemberId(reservationDto.getMember());
+        for(RoomAndRatePriceDto r : roomAndRatePriceDtos) {
+            ReservationConfirmed newConfirmed = new ReservationConfirmed();
+            newConfirmed.setReservationNo(reservationNo);
+            newConfirmed.setMemberId(reservationDto.getMember());
 
-        RoomType roomType = reservationDto.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId();
-        RatePlan ratePlan = reservationDto.getMostActualRatePlanStructureHistory().getOriginRatePlanStructureId().getRatePlan();
+            newConfirmed.setRevenue(r.getPrice());
+            newConfirmed.setStayDate(r.getDate());
+            newConfirmed.setCalendarRateHistoryId(r.getCalendarRateHistory());
 
-        RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), roomType);
-        RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), ratePlan);
-
-        List<Integer> integers = calendarRateHistoryRepository.calendarRateHistoryIds(reservationDto.getArrivalDate(), reservationDto.getDepartureDate(), reservationDto.getHotel());
-        List<CalendarRateHistory> d = new ArrayList<>();
-
-        for (Integer i : integers){
-            CalendarRateHistory one = calendarRateHistoryRepository.getOne(i);
-            d.add(one);
-        }
-
-        for(RoomAndRatePriceDto c : roomAndRatePriceDtos){
-            newConfirmed.setStayDate(c.getDate());
-            newConfirmed.setRevenue(c.getPrice());
-
-            for (CalendarRateHistory e: d){
-                if (e.getOriginCalendarRatesId().getStandardPrice().equals(newConfirmed.getRevenue())){
-                    newConfirmed.setCalendarRateHistoryId(e);
-                }
-            }
             reservationConfirmedRepository.save(newConfirmed);
-
         }
-
-        return true;
     }
 
     @Override
@@ -331,6 +320,5 @@ public class HotelService implements IHotelService {
                 .get();
 
     }
-
 
 }
