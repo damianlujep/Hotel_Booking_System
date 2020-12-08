@@ -23,6 +23,10 @@ public class Reservation {
     @JoinColumn(name = "rate_plan_structure_history_id")
     private RatePlanStructureHistory ratePlanStructureHistory;
 
+    @ManyToOne
+    @JoinColumn(name = "room_type_structure_history_id")
+    private RoomTypeStructureHistory roomTypeStructureHistory;
+
     @Column(name = "arrival_date")
     private LocalDate arrivalDate;
 
@@ -46,6 +50,9 @@ public class Reservation {
     private Member memberId;
 
     private String status;
+
+    @Column(name = "reservation_no")
+    private String reservationNo;
 
     @PrePersist
     public void prePersist() {

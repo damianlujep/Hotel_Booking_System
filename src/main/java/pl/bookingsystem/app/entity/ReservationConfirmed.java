@@ -25,16 +25,16 @@ public class ReservationConfirmed {
     @Column(name = "stay_date")
     private LocalDate stayDate;
 
-    @ManyToOne
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotelId;
-
     @Column(name = "revenue")
     private BigDecimal revenue;
 
     @ManyToOne
     @JoinColumn(name = "calendar_rates_history_id")
     private CalendarRateHistory calendarRateHistoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member memberId;
 
 
 //    @PrePersist

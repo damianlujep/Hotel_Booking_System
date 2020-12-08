@@ -6,12 +6,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.bookingsystem.app.dto.HotelSearchingDto;
+import pl.bookingsystem.app.dto.PayAndConfirmBookingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
-import pl.bookingsystem.app.entity.Hotel;
-import pl.bookingsystem.app.entity.RatePlanStructureHistory;
-import pl.bookingsystem.app.entity.RoomType;
-import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
+import pl.bookingsystem.app.entity.*;
 import pl.bookingsystem.app.services.IHotelService;
 
 import javax.servlet.http.HttpSession;
@@ -119,7 +117,7 @@ public class BookingController {
 
     //Payment for members is on MembersController
     @PostMapping("/payment")
-    public String paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
 
@@ -128,7 +126,33 @@ public class BookingController {
         
         session.setAttribute("newBookingInProcess", newBooking);
 
-        return "/booking/payment-form";
+        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
+        session.setAttribute("totalPrice", bigDecimal);
+
+        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
+    }
+
+    @PostMapping("/confirmReservation")
+    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result, HttpSession session){
+        if (result.hasErrors()){
+            return new ModelAndView("booking/payment-form", "payAndConfirmForm", payAndConfirmBookingDto);
+        }
+
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        Member currentAdminLogged = (Member) session.getAttribute("currentAdminLogged");
+
+        if (currentAdminLogged != null){
+            newBooking.setMember(currentAdminLogged);
+        }
+
+        hotelService.confirmReservation(newBooking);
+
+        return new ModelAndView("redirect:bookingConfirmation");
+    }
+
+    @GetMapping("/bookingConfirmation")
+    public ModelAndView bookingFinalConfirmation(){
+        return new ModelAndView("booking/booking-confirmation");
     }
 
 

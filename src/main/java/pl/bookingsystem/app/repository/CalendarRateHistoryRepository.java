@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface CalendarRateHistoryRepository extends JpaRepository<CalendarRateHistory, Integer> {
 
-    @Query(value = "select cr.date, h.id as hotelId, (t1.standard_price + room_type(?1)) * rate_plan(?2) as price, t1.origin_calendar_rates_id as originCalendarRatesId " +
+    @Query(value = "SELECT t1.id, cr.date, h.id as hotelId, (t1.standard_price + room_type(?1)) * rate_plan(?2) as price, t1.origin_calendar_rates_id as originCalendarRatesId " +
             "from calendar_rates_history t1 " +
             "         JOIN calendar_rates cr on cr.id = t1.origin_calendar_rates_id " +
             "         join hotels as h on h.id = cr.hotel_id " +

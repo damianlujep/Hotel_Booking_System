@@ -25,4 +25,6 @@ public interface IHotelService {
     RatePlanStructureHistory mostActualRatePlanStructure(ReservationDto reservationDto, int ratePlanId);
     RoomTypeStructureHistory mostActualRoomTypeStructure(ReservationDto reservationDto, int roomType);
     Map<String, List<RoomAndRatePriceDto>> getFinalRoomAndRatePriceList(ReservationDto reservationDto, String roomAndRateKey);
+    void confirmReservation(ReservationDto reservationDto);
+    BigDecimal calculateTotalRoomRevenue(ReservationDto reservationDto);
 }
