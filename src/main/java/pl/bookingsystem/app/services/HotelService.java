@@ -321,4 +321,19 @@ public class HotelService implements IHotelService {
 
     }
 
+    @Override
+    public boolean nonRefOfferChecker(String selectedRateAndRoomKey) {
+        boolean isNonRefOffer = false;
+
+        switch (selectedRateAndRoomKey){
+            case "DOUBLE_PROMOTIONAL":
+            case "TWIN_PROMOTIONAL":
+            case "DOUBLE_MEMBERS_PROMOTIONAL":
+            case "TWIN_MEMBERS_PROMOTIONAL":
+                isNonRefOffer = true;
+                break;
+        }
+
+        return isNonRefOffer;
+    }
 }

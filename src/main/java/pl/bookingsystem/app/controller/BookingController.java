@@ -117,19 +117,26 @@ public class BookingController {
 
     //Payment for members is on MembersController
     @PostMapping("/payment")
-    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, @RequestParam BigDecimal avgPricePerNight, HttpSession session){
+        ModelAndView paymentForm = new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
+        String roomTypeName = newBooking.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId().getName();
+        paymentForm.addObject("selectedRoomType", roomTypeName);
 
         Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
-        
+
         session.setAttribute("newBookingInProcess", newBooking);
 
         BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
-        session.setAttribute("totalPrice", bigDecimal);
+        paymentForm.addObject("totalPrice", bigDecimal);
+        paymentForm.addObject("avgPricePerNight", avgPricePerNight);
 
-        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
+        boolean isNonRefOffer = hotelService.nonRefOfferChecker(newBooking.getSelectedRateAndRoomKey());
+        paymentForm.addObject("isNonRefOffer", isNonRefOffer);
+
+        return paymentForm;
     }
 
     @PostMapping("/confirmReservation")
