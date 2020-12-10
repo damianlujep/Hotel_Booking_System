@@ -292,9 +292,11 @@ public class HotelService implements IHotelService {
 
         reservationRepository.save(newBooking);
 
-//        Reservation Confirmed
+        // Reservation Confirmed
         Map<String, List<RoomAndRatePriceDto>> map = reservationDto.getRoomAndRatePriceList();
         List<RoomAndRatePriceDto> roomAndRatePriceDtos = map.get(reservationDto.getSelectedRateAndRoomKey());
+
+        RoomType roomTypeId = reservationDto.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId();
 
         for(RoomAndRatePriceDto r : roomAndRatePriceDtos) {
             ReservationConfirmed newConfirmed = new ReservationConfirmed();
@@ -306,6 +308,9 @@ public class HotelService implements IHotelService {
             newConfirmed.setCalendarRateHistoryId(r.getCalendarRateHistory());
 
             reservationConfirmedRepository.save(newConfirmed);
+
+            // Reduce rooms from calendar_availability
+            calendarAvailabilityRepository.updateCalendarAvailabilityByHotelDateAndRoomType(r.getHotelId(), r.getDate(), roomTypeId);
         }
     }
 
