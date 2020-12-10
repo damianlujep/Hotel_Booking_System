@@ -32,7 +32,8 @@
         <main id="htlfndr-main-content" class="col-sm-12 col-md-8 col-lg-9 htlfndr-hotel-single-content" role="main">
             <article class="post htlfndr-room-post">
                 <header>
-                    <h1 class="htlfndr-entry-title">${newBookingInProcess.hotel.name}</h1><a href="hotel-page-v1.html"><span>/ Hilton Hotel</span></a>
+                    <h1 class="htlfndr-entry-title">Twin room </h1>
+                    <a href="hotel-page-v1.html"><span>/${newBookingInProcess.hotel.name}</span></a>
                 </header>
                 <!-- Article slider -->
                 <div id="htlfndr-room-slider" class="owl-carousel">
@@ -121,6 +122,11 @@
             <%--  Form to PayAndConfirm Booking form--%>
             <form:form action="/booking/payment" method="post">
                 <input name="roomAndRateKey" id="roomAndRateKey" value="TWIN_STANDARD" type="hidden">
+                <c:forEach items="${averagePrices}" var="averagePrice">
+                    <c:if test="${averagePrice.key.equals('TWIN_STANDARD')}">
+                        <input name="avgPricePerNight" id="avgPricePerNight" value="${averagePrice.value}" type="hidden">
+                    </c:if>
+                </c:forEach>
                 <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
             </form:form>
             <%--END -  Form to PayAndConfirm Booking form--%>

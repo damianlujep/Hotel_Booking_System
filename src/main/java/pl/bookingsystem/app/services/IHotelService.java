@@ -27,4 +27,5 @@ public interface IHotelService {
     Map<String, List<RoomAndRatePriceDto>> getFinalRoomAndRatePriceList(ReservationDto reservationDto, String roomAndRateKey);
     void confirmReservation(ReservationDto reservationDto);
     BigDecimal calculateTotalRoomRevenue(ReservationDto reservationDto);
+    boolean nonRefOfferChecker (String selectedRateAndRoomKey);
 }

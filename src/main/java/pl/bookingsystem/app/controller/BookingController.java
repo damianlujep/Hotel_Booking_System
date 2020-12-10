@@ -1,6 +1,9 @@
 package pl.bookingsystem.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +14,7 @@ import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.*;
 import pl.bookingsystem.app.services.IHotelService;
+import pl.bookingsystem.app.services.IMemberService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -23,16 +27,18 @@ import java.util.Map;
 @RequestMapping("/booking")
 public class BookingController {
     private final IHotelService hotelService;
+    private final IMemberService memberService;
 
     @Autowired
-    public BookingController(IHotelService hotelService) {
+    public BookingController(IHotelService hotelService, IMemberService memberService) {
         this.hotelService = hotelService;
+        this.memberService = memberService;
     }
 
     @PostMapping("/results")
     public ModelAndView searchHotelFromHandler(@ModelAttribute("hotelSearching") @Valid HotelSearchingDto hotelSearchingDto, BindingResult result, HttpSession session){
         if (result.hasErrors()){
-            return new ModelAndView("redirect: /../..", "hotelSearching", hotelSearchingDto);
+            return new ModelAndView("redirect:/../..", "hotelSearching", hotelSearchingDto);
         }
 
         List<Hotel> hotelFoundList = hotelService.findHotelByCityAndArrivalDepartureDates(hotelSearchingDto);
@@ -115,21 +121,57 @@ public class BookingController {
 
     }
 
-    //Payment for members is on MembersController
+    //Payment Post method for members is on MembersController
     @PostMapping("/payment")
-    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, HttpSession session){
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, @RequestParam BigDecimal avgPricePerNight, HttpSession session){
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
 
         Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
-        
+
+        newBooking.setAvgPricePerNight(avgPricePerNight);
+        BigDecimal totalPrice = hotelService.calculateTotalRoomRevenue(newBooking);
+        newBooking.setTotalPrice(totalPrice);
+
         session.setAttribute("newBookingInProcess", newBooking);
 
-        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
-        session.setAttribute("totalPrice", bigDecimal);
+        return new ModelAndView("redirect:confirmationForm");
+    }
 
-        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
+    @GetMapping("/confirmationForm")
+    public ModelAndView confirmationForm (HttpSession session, Authentication auth){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication instanceof UsernamePasswordAuthenticationToken) {
+            String email = auth.getName();
+            Member currentMember = memberService.findMemberMyEmail(email);
+            session.setAttribute("currentAdminLogged", currentMember);
+        }
+
+        PayAndConfirmBookingDto paymentConfirmationDto = new PayAndConfirmBookingDto();
+        Member currentMember = (Member) session.getAttribute("currentAdminLogged");
+
+        if (currentMember != null){
+            paymentConfirmationDto.setPayerFirstName(currentMember.getName());
+            paymentConfirmationDto.setPayerLastName(currentMember.getLastName());
+            paymentConfirmationDto.setPayerEmail(currentMember.getEmail());
+            paymentConfirmationDto.setPayerDateOfBirth(currentMember.getDayOfBirth());
+            paymentConfirmationDto.setPayerPhoneNumber(currentMember.getPhone());
+        }
+
+        ModelAndView paymentForm = new ModelAndView("booking/payment-form", "payAndConfirmForm", paymentConfirmationDto);
+
+        ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
+        String roomTypeName = newBooking.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId().getName();
+        paymentForm.addObject("selectedRoomType", roomTypeName);
+
+        session.setAttribute("newBookingInProcess", newBooking);
+
+        boolean isNonRefOffer = hotelService.nonRefOfferChecker(newBooking.getSelectedRateAndRoomKey());
+        paymentForm.addObject("isNonRefOffer", isNonRefOffer);
+
+        return paymentForm;
     }
 
     @PostMapping("/confirmReservation")
@@ -160,6 +202,5 @@ public class BookingController {
     public List<String> allCitiesList(){
         return hotelService.getAllHotelCities();
     }
-
 
 }

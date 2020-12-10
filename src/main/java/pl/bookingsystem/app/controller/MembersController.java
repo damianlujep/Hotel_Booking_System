@@ -30,22 +30,21 @@ public class MembersController {
     }
 
     @PostMapping("/booking/payment")
-    public ModelAndView paymentFormMembers(Authentication auth, HttpSession session, @RequestParam String roomAndRateKey){
-        String email = auth.getName();
-        Member currentMember = memberService.findMemberMyEmail(email);
-        session.setAttribute("currentAdminLogged", currentMember);
-
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, @RequestParam BigDecimal avgPricePerNight, HttpSession session){
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
 
         Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
 
-        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
-        session.setAttribute("totalPrice", bigDecimal);
+        ModelAndView redirectionToForm = new ModelAndView("redirect:../../booking/confirmationForm");
+
+        newBooking.setAvgPricePerNight(avgPricePerNight);
+        BigDecimal totalPrice = hotelService.calculateTotalRoomRevenue(newBooking);
+        newBooking.setTotalPrice(totalPrice);
 
         session.setAttribute("newBookingInProcess", newBooking);
-        return new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
 
+        return  redirectionToForm;
     }
 }

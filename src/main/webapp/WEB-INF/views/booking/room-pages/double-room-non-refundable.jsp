@@ -124,6 +124,11 @@
             <%--  Form to PayAndConfirm Booking form--%>
             <form:form action="/booking/payment" method="post">
                 <input name="roomAndRateKey" id="roomAndRateKey" value="DOUBLE_PROMOTIONAL" type="hidden">
+                <c:forEach items="${averagePrices}" var="averagePrice">
+                    <c:if test="${averagePrice.key.equals('DOUBLE_PROMOTIONAL')}">
+                        <input name="avgPricePerNight" id="avgPricePerNight" value="${averagePrice.value}" type="hidden">
+                    </c:if>
+                </c:forEach>
                 <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
             </form:form>
             <%--END -  Form to PayAndConfirm Booking form--%>

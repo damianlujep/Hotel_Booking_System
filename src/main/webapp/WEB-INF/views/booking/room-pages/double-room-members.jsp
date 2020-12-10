@@ -116,14 +116,18 @@
                         <div>
                             <span style="padding-top: 10px">price</span> <span>  for 1 night</span>
                         </div>
-
                     </div> <!-- .htlfndr-hotel-price -->
                 </div><!-- .htlfndr-widget-main-content -->
             </div><!-- .widget .htlfndr-hotel-visit-card -->
 
             <%--  Form to PayAndConfirm Booking form--%>
-            <form:form action="/members/booking/payment" method="post">
+            <form:form action="/members/booking/payment" method="POST">
                 <input name="roomAndRateKey" id="roomAndRateKey" value="DOUBLE_MEMBERS_STANDARD" type="hidden">
+                <c:forEach items="${averagePrices}" var="averagePrice">
+                    <c:if test="${averagePrice.key.equals('DOUBLE_MEMBERS_STANDARD')}">
+                         <input name="avgPricePerNight" id="avgPricePerNight" value="${averagePrice.value}" type="hidden">
+                    </c:if>
+                </c:forEach>
                 <input class="htlfndr-book-now-button" type="submit" value="book now" style="margin-bottom: 0"/>
             </form:form>
             <%--END -  Form to PayAndConfirm Booking form--%>

@@ -25,6 +25,9 @@ public class PayAndConfirmBookingDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past(message = "Enter a valid Day of Birth")
     private LocalDate payerDateOfBirth;
+    @NotBlank
+    @Size(min = 7, max = 20, message = "{ValidPhoneNumber}")
+    private String payerPhoneNumber;
 
     @NotBlank
     private String creditCardType;

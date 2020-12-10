@@ -217,7 +217,7 @@ public class HotelService implements IHotelService {
         RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), roomType);
         RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), ratePlan);
 
-        //Stay date correction, just night are count for billing
+        //Stay date correction, just nights are count for billing
         LocalDate departureDateCorrection = reservationDto.getDepartureDate().minusDays(1);
 
         List<String> currentRatesAndPrices = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), departureDateCorrection, reservationDto.getHotel());
@@ -292,9 +292,11 @@ public class HotelService implements IHotelService {
 
         reservationRepository.save(newBooking);
 
-//        Reservation Confirmed
+        // Reservation Confirmed
         Map<String, List<RoomAndRatePriceDto>> map = reservationDto.getRoomAndRatePriceList();
         List<RoomAndRatePriceDto> roomAndRatePriceDtos = map.get(reservationDto.getSelectedRateAndRoomKey());
+
+        RoomType roomTypeId = reservationDto.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId();
 
         for(RoomAndRatePriceDto r : roomAndRatePriceDtos) {
             ReservationConfirmed newConfirmed = new ReservationConfirmed();
@@ -306,6 +308,9 @@ public class HotelService implements IHotelService {
             newConfirmed.setCalendarRateHistoryId(r.getCalendarRateHistory());
 
             reservationConfirmedRepository.save(newConfirmed);
+
+            // Reduce rooms from calendar_availability
+            calendarAvailabilityRepository.updateCalendarAvailabilityByHotelDateAndRoomType(r.getHotelId(), r.getDate(), roomTypeId);
         }
     }
 
@@ -321,4 +326,19 @@ public class HotelService implements IHotelService {
 
     }
 
+    @Override
+    public boolean nonRefOfferChecker(String selectedRateAndRoomKey) {
+        boolean isNonRefOffer = false;
+
+        switch (selectedRateAndRoomKey){
+            case "DOUBLE_PROMOTIONAL":
+            case "TWIN_PROMOTIONAL":
+            case "DOUBLE_MEMBERS_PROMOTIONAL":
+            case "TWIN_MEMBERS_PROMOTIONAL":
+                isNonRefOffer = true;
+                break;
+        }
+
+        return isNonRefOffer;
+    }
 }
