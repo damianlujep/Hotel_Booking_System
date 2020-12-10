@@ -39,7 +39,7 @@ public class MemberDto {
     private String rePassword;
 
     @NotBlank
-    @Size(min = 7, max = 20, message = "{ValidPhoneNumber.memberDto}")
+    @Size(min = 7, max = 20, message = "{ValidPhoneNumber}")
     private String phone;
 
     @NotNull

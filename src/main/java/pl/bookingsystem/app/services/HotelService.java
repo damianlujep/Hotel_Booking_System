@@ -217,7 +217,7 @@ public class HotelService implements IHotelService {
         RoomTypeStructure rotStructure = roomTypeStructureRepository.findByHotelIdAndRoomTypeId(reservationDto.getHotel(), roomType);
         RatePlanStructure rapStructure = ratePlanStructureRepository.findByHotelIdAndRatePlan(reservationDto.getHotel(), ratePlan);
 
-        //Stay date correction, just night are count for billing
+        //Stay date correction, just nights are count for billing
         LocalDate departureDateCorrection = reservationDto.getDepartureDate().minusDays(1);
 
         List<String> currentRatesAndPrices = calendarRateHistoryRepository.currentPricesByDateRoomTypeStructureAndRatePlanStructure(rotStructure, rapStructure,reservationDto.getArrivalDate(), departureDateCorrection, reservationDto.getHotel());

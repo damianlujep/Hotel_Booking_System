@@ -30,28 +30,21 @@ public class MembersController {
     }
 
     @PostMapping("/booking/payment")
-    public ModelAndView paymentFormMembers(Authentication auth, HttpSession session, @RequestParam String roomAndRateKey, @RequestParam BigDecimal avgPricePerNight){
-        ModelAndView paymentForm = new ModelAndView("booking/payment-form", "payAndConfirmForm", new PayAndConfirmBookingDto());
-        String email = auth.getName();
-        Member currentMember = memberService.findMemberMyEmail(email);
-        session.setAttribute("currentAdminLogged", currentMember);
-
+    public ModelAndView paymentFormNonMembers(@RequestParam String roomAndRateKey, @RequestParam BigDecimal avgPricePerNight, HttpSession session){
         ReservationDto newBooking = (ReservationDto) session.getAttribute("newBookingInProcess");
         newBooking.setSelectedRateAndRoomKey(roomAndRateKey);
-        String roomTypeNameMembers = newBooking.getMostActualRoomTypeStructureHistory().getOriginRoomTypeStructureId().getRoomTypeId().getName();
-        paymentForm.addObject("selectedRoomType", roomTypeNameMembers);
 
         Map<String, List<RoomAndRatePriceDto>> finalRoomAndRatePriceList = hotelService.getFinalRoomAndRatePriceList(newBooking, roomAndRateKey);
         newBooking.setRoomAndRatePriceList(finalRoomAndRatePriceList);
 
-        BigDecimal bigDecimal = hotelService.calculateTotalRoomRevenue(newBooking);
-        paymentForm.addObject("totalPrice", bigDecimal);
-        paymentForm.addObject("avgPricePerNight", avgPricePerNight);
+        ModelAndView redirectionToForm = new ModelAndView("redirect:../../booking/confirmationForm");
 
-        boolean isNonRefOffer = hotelService.nonRefOfferChecker(newBooking.getSelectedRateAndRoomKey());
-        paymentForm.addObject("isNonRefOffer", isNonRefOffer);
+        newBooking.setAvgPricePerNight(avgPricePerNight);
+        BigDecimal totalPrice = hotelService.calculateTotalRoomRevenue(newBooking);
+        newBooking.setTotalPrice(totalPrice);
 
         session.setAttribute("newBookingInProcess", newBooking);
-        return paymentForm;
+
+        return  redirectionToForm;
     }
 }

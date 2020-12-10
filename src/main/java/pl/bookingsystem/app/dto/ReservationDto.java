@@ -8,6 +8,7 @@ import pl.bookingsystem.app.entity.Member;
 import pl.bookingsystem.app.entity.RatePlanStructureHistory;
 import pl.bookingsystem.app.entity.RoomTypeStructureHistory;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ public class ReservationDto {
     private RoomTypeStructureHistory mostActualRoomTypeStructureHistory;
     private String selectedRateAndRoomKey;
     private Member member;
+    private BigDecimal avgPricePerNight;
+    private BigDecimal totalPrice;
 
 
 }

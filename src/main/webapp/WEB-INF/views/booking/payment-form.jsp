@@ -35,7 +35,7 @@
                         <header>
                             <h2 class="htlfndr-form-section-title">Your personal <span>information</span></h2>
                             <c:if test="${currentAdminLogged == null}">
-                            <h5 class="htlfndr-form-section-description"><a href="#" data-toggle="modal" data-target="#htlfndr-sing-in">
+                            <h5 class="htlfndr-form-section-description"><a href="<c:url value="/login"/>" data-toggle="modal">
                                 <span class="htlfndr-sing-in-link">Sing in</span></a> for fast booking or enter your personal information</h5>
                             </c:if>
                         </header>
@@ -69,6 +69,14 @@
                                             <form:input path="payerDateOfBirth" type="date" class="htlfndr-input" id="htlfndr-personal-birth-day" cssStyle="margin-bottom: 10px"/>
                                             <form:errors path="payerDateOfBirth" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
                                         </div><!-- .htlfndr-small-select .htlfndr-input-wrapper -->
+                                    </div>
+                                </div><!-- .row -->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="htlfndr-personal-email" class="htlfndr-required htlfndr-top-label">Phone number</label>
+                                        <form:input path="payerPhoneNumber" type="text" id="htlfndr-personal-phone" name="htlfndr-personal-phone" class="htlfndr-input"
+                                                    placeholder="Enter your phone number" cssStyle="margin-bottom: 10px"/>
+                                        <form:errors path="payerPhoneNumber" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
                                     </div>
                                 </div><!-- .row -->
                             </div><!-- .htlfndr-form-block-inner -->
@@ -260,12 +268,12 @@
                                 <p class="htlfndr-details"><span>persons:</span> <span>${newBookingInProcess.guestsQuantity}</span></p>
                             </div><!-- .htlfndr-widget-block -->
                             <div class="htlfndr-widget-block htlfndr-bigger-font">
-                                <p class="htlfndr-room-cost"><span>Avg. price per night</span> <span>${avgPricePerNight} zł</span></p>
+                                <p class="htlfndr-room-cost"><span>Avg. price per night</span> <span>${newBookingInProcess.avgPricePerNight} zł</span></p>
                                 <p class="htlfndr-room-cost"><span>Extra fees</span> <span>0 zł</span></p>
                             </div><!-- .htlfndr-widget-block -->
                             <p class="htlfndr-total-price">total price:</p>
                             <div class="htlfndr-hotel-price">
-                                <span class="htlfndr-cost" style="font-size: 23px; margin: 0">${totalPrice} zł</span>
+                                <span class="htlfndr-cost" style="font-size: 23px; margin: 0">${newBookingInProcess.totalPrice} zł</span>
                             </div><!-- .htlfndr-Spagere-price -->
                         </div><!-- .htlfndr-widget-main-content -->
                     </div><!-- .widget -->
