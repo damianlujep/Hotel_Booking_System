@@ -42,13 +42,13 @@
         </div>
         <div>
             <h4>Password</h4>
-            <form:input path="password" class="htlfndr-input" type="text"/>
+            <form:input path="password" class="htlfndr-input" type="password"/>
             <p></p>
             <form:errors path="password" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
         </div>
         <div>
             <h4>Confirm Password</h4>
-            <form:input path="rePassword" class="htlfndr-input" type="text"/>
+            <form:input path="rePassword" class="htlfndr-input" type="password"/>
             <p></p>
             <form:errors path="rePassword" class="alert alert-danger" role="alert" cssStyle="text-align: center; width: auto"/>
         </div>
