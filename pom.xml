@@ -116,6 +116,12 @@
 			<artifactId>passay</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<!--Dependency for email confirmation-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.4.1</version>
+		</dependency>
 		<!--Data encrypting-->
 		<dependency>
 			<groupId>com.github.ulisesbocchio</groupId>
