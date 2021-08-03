@@ -13,11 +13,14 @@ import pl.bookingsystem.app.dto.PayAndConfirmBookingDto;
 import pl.bookingsystem.app.dto.ReservationDto;
 import pl.bookingsystem.app.dto.RoomAndRatePriceDto;
 import pl.bookingsystem.app.entity.*;
+import pl.bookingsystem.app.services.IEmailService;
 import pl.bookingsystem.app.services.IHotelService;
 import pl.bookingsystem.app.services.IMemberService;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -28,11 +31,13 @@ import java.util.Map;
 public class BookingController {
     private final IHotelService hotelService;
     private final IMemberService memberService;
+    private final IEmailService emailService;
 
     @Autowired
-    public BookingController(IHotelService hotelService, IMemberService memberService) {
+    public BookingController(IHotelService hotelService, IMemberService memberService, IEmailService emailService) {
         this.hotelService = hotelService;
         this.memberService = memberService;
+        this.emailService = emailService;
     }
 
     @PostMapping("/results")
@@ -175,7 +180,7 @@ public class BookingController {
     }
 
     @PostMapping("/confirmReservation")
-    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result, HttpSession session){
+    public ModelAndView bookingConfirmationHandler(@ModelAttribute("payAndConfirmForm") @Valid PayAndConfirmBookingDto payAndConfirmBookingDto, BindingResult result, HttpSession session) throws MessagingException, UnsupportedEncodingException {
         if (result.hasErrors()){
             return new ModelAndView("booking/payment-form", "payAndConfirmForm", payAndConfirmBookingDto);
         }
@@ -188,6 +193,7 @@ public class BookingController {
         }
 
         hotelService.confirmReservation(newBooking);
+        emailService.sendHtmlMessage(payAndConfirmBookingDto.getPayerEmail(), newBooking);
 
         return new ModelAndView("redirect:bookingConfirmation");
     }
