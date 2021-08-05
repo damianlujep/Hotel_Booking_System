@@ -14,7 +14,7 @@
                     <div class="widget">
                         <a class="htlfndr-logo navbar-brand" href="#">
                             <img src="<c:url value="/images/logo.png"/>" height="20" width="30" alt="Logo" />
-                            <p class="htlfndr-logo-text">hotel <span>finder</span></p>
+                            <p class="htlfndr-logo-text" style="font-size: 21px">Hotel <span>Booking</span> System</p>
                         </a>
                         <hr />
                         <p>Suspendisse sed sollicitudin nisl, at dignissim libero. Sed porta tincidunt ipsum, vel volutpat.</p>
@@ -26,13 +26,13 @@
                     <div class="widget">
                         <h3 class="widget-title">contact info</h3>
                         <h5>address</h5>
-                        <p>Spagere	<br />120 CA 15th Avenue-Suite 214, USA</p>
+                        <p>Poland	<br />Hotels Avenue 16, Cracow</p>
                         <hr />
                         <h5>phone number</h5>
-                        <p>1-555-5555-5555</p>
+                        <p>+48 123 456 789</p>
                         <hr />
                         <h5>email address</h5>
-                        <p>support@Spagere.zendesk.com.com</p>
+                        <p>support@hotelbookingsystem.pl</p>
                     </div><!-- .widget -->
                 </aside><!-- .col-xs-12.col-sm-6.col-md-3.htlfndr-widget-column -->
                 <aside class="col-xs-12 col-sm-6 col-md-3 htlfndr-widget-column">
@@ -40,9 +40,9 @@
                         <h3 class="widget-title">pages</h3>
                         <ul class="menu">
                             <li class="menu-item active"><a href="<c:url value="/"/>">home</a></li>
-                            <li class="menu-item"><a href="<c:url value="/contact"/>">Contact</a></li>
-                            <li class="menu-item"><a href="<c:url value="/about"/>">about</a></li>
-                            <li class="menu-item"><a href="user-page.html">user profile</a></li>
+<%--                            <li class="menu-item"><a href="<c:url value="/contact"/>">Contact</a></li>--%>
+<%--                            <li class="menu-item"><a href="<c:url value="/about"/>">about</a></li>--%>
+<%--                            <li class="menu-item"><a href="user-page.html">user profile</a></li>--%>
                         </ul>
                     </div><!-- .widget -->
                 </aside><!-- .col-xs-12.col-sm-6.col-md-3.htlfndr-widget-column -->
@@ -51,12 +51,12 @@
                         <h3 class="widget-title">follow us</h3>
                         <!-- Start of Follow Us buttons -->
                         <div class="htlfndr-follow-plugin">
-                            <a href="https://www.facebook.com/Spagere/" target="_blank" class="htlfndr-follow-button button-facebook"></a>
-                            <a href="https://twitter.com/Spagere" target="_blank" class="htlfndr-follow-button button-twitter"></a>
-                            <a href="https://plus.google.com/+Spagere" target="_blank" class="htlfndr-follow-button button-google-plus"></a>
-                            <a href="https://www.linkedin.com/company/Spagere/" target="_blank" class="htlfndr-follow-button button-linkedin"></a>
+                            <a href="#" target="_blank" class="htlfndr-follow-button button-facebook"></a>
+                            <a href="#" target="_blank" class="htlfndr-follow-button button-twitter"></a>
+                            <a href="#" target="_blank" class="htlfndr-follow-button button-google-plus"></a>
+                            <a href="#" target="_blank" class="htlfndr-follow-button button-linkedin"></a>
                             <a href="#" class="htlfndr-follow-button button-pinterest"></a>
-                            <a href="https://www.youtube.com/Spagere" target="_blank" class="htlfndr-follow-button button-youtube"></a>
+                            <a href="#" target="_blank" class="htlfndr-follow-button button-youtube"></a>
                         </div><!-- .htlfndr-follow-plugin -->
                         <!-- End of Follow Us buttons -->
                         <hr />
@@ -74,7 +74,7 @@
 
     <div class="htlfndr-copyright">
         <div class="container" role="contentinfo">
-            <p>Copyright 2017 | Spagere | All Rights Reserved | Designed by Spagere</p>
+            <p>Hotel Booking System designed by Damian Luje Ponce</p>
         </div><!-- .container -->
     </div><!-- .htlfndr-copyright -->
 </footer>

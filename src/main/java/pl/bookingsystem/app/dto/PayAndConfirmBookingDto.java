@@ -2,7 +2,6 @@ package pl.bookingsystem.app.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import pl.bookingsystem.app.validator.ValidEmail;
