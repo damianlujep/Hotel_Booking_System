@@ -394,8 +394,8 @@
                     <div class="htlfndr-widget-main-content htlfndr-widget-padding">
                         <h3 class="widget-title">need our help</h3>
                         <span>24/7 dedicated customer support</span>
-                        <p class="htlfndr-phone">+(000) 000-000-000</p>
-                        <p class="htlfndr-mail">support@Spagere.zendesk.com</p>
+                        <p class="htlfndr-phone">+48 123 456 789</p>
+                        <p class="htlfndr-mail">support@hotelbookingsystem.pl</p>
                     </div><!-- .htlfndr-widget-main-content .htlfndr-widget-padding -->
                 </div><!-- .widget .htlfndr-widget-help -->
             </aside><!-- .htlfndr-sidebar-in-right -->

@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Spagere - Online Booking HTML Website Template</title>
+    <title>Hotel Booking System - Home</title>
 
     <!-- Bootstrap -->
     <link href="<c:url value="css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
@@ -52,7 +52,7 @@
                         </button>
                         <a class="htlfndr-logo navbar-brand" href="<c:url value="/"/>">
                             <img src="<c:url value="/images/logo.png"/>" alt="Logo" />
-                            <p class="htlfndr-logo-text">Spagere <span>finder</span></p>
+                            <p class="htlfndr-logo-text">Hotel <span>Booking</span> System</p>
                         </a>
                     </div>
                     <!-- .navbar-header -->
@@ -115,19 +115,19 @@
                             <li class="active">
                                 <a href="<c:url value="/"/>">home</a>
                             </li>
-
-                            <li>
-                                <a href="blog-index.html">blog</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value="/contact"/>">contact</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value="/about"/>">about</a>
-                            </li>
-                            <li>
-                                <a href="<c:url value="/member/profile"/>">user profile</a>
-                            </li>
+                            <%--Code to be implemented to extend hotel website--%>
+<%--                            <li>--%>
+<%--                                <a href="blog-index.html">blog</a>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="<c:url value="/contact"/>">contact</a>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="<c:url value="/about"/>">about</a>--%>
+<%--                            </li>--%>
+<%--                            <li>--%>
+<%--                                <a href="<c:url value="/member/profile"/>">user profile</a>--%>
+<%--                            </li>--%>
                         </ul>
                     </div><!-- .collapse.navbar-collapse -->
                 </div><!-- .container -->
