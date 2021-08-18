@@ -16,7 +16,7 @@ which allows the Hotel Revenue Management (This PMS is a different project)
 **This project does not include photos or hotels information**.
 
 ### Functionalities and characteristics:
-- Remote relational database in MySQL
+- Remote relational database in MySQL originally allocated in AWS, and then migrated to a private server
 - Validation of registration and login forms for members
 - `Passay` for password's strength validation during registration
 - `Error messages` for inputs read from `ValidationMessages.properties`
@@ -27,7 +27,7 @@ which allows the Hotel Revenue Management (This PMS is a different project)
 - Alert with message for non-refundable offers
 - **10% discount for members** implementation
 - `Members only` - Automatic personal details auto-fill using current session data during payment form
-- **Booking confirmation by email** after correctly filling out the registration form
+- **Booking confirmation by email** after correctly filling out the reservation form
 
 ### Database information and external PMS:
 The project shares a database with a **Property Management System (`PMS`)** that is in charge of the hotel's Revenue Management.
