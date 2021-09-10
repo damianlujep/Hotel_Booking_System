@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.0</version>
+		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.bookingsystem</groupId>
-	<artifactId>Hotel_Booking_System</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>hotel-booking-system</artifactId>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
-	<name>Hotel_Booking_System</name>
+	<name>hotel-booking-system</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -86,7 +86,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>4.0.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -136,6 +136,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>com.github.ulisesbocchio</groupId>

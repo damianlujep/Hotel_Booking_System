@@ -36,3 +36,10 @@ Because both are different projects, they have been designed to be independent i
 ### Technologies and tools:
 `The app was developed using:` IntelliJ, GitHub, Maven, Bootstrap, JSP, JSTL, SpringBoot, SpringSecurity, Spring Email, Hibernate, 
 Hibernate Validator, MySQL on AWS, Lombok, Passay, JavaScript, HTML5 and CSS.
+
+### Deployment:
+This project has been deployed with Docker.
+
+To visit the application live [CLICK HERE](http://45.151.125.237:3002/)
+
+Do not forget to register as member to obtain **10% discount** on bookings.
